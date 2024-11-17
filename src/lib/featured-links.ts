@@ -23,7 +23,7 @@ const featuredLinks = [
 		description:
 			"I created user registration pages using Nextjs + Tsoft, and improved rankings",
 		type: "Contract",
-		icon: "i-lucide-sparkle text-blue-500 text-lg",
+		icon: "i-lucide-sparkle text-amber-500 text-lg",
 	},
 ];
 
