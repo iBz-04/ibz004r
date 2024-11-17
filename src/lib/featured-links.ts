@@ -1,32 +1,29 @@
-import MangobaseFeatureImage from "../components/MangobaseFeatureImage.astro";
 
 const featuredLinks = [
-	// {
-	// 	title: 'SerialBox',
-	// 	description:
-	// 		'Growing engineers. A project to teach people especially kids how to build eletronic projects — with community.',
-	// 	link: 'sb.degreat.co.uk',
-	// },
 	{
-		title: "Mangobase 🥭",
+		title: "Erkam Medya",
+		position: "Backend Engineer",
 		description:
-			"Low-code Javascript backend framework for Node and Bun runtimes.",
-		link: "degreat.co.uk/mangobase",
-		featureImage: MangobaseFeatureImage,
+			"Developed Rest APIs & backend logic for mobile applications in PHP",
+			type: "Return offer",
+			icon: "i-lucide-hand-metal text-green-500 text-lg",
+		
 	},
 	{
-		title: "Adeton",
+		title: "Erkam Medya",
+		position: "Software Engineer I",
 		description:
-			"This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant.",
-		link: "adeton.io",
+			"I worked on a Library catalogue system for 100+ users with Laravel & MySQL",
+		type: "Internship",
+		icon: "i-lucide-hand-metal text-green-500 text-lg",
 	},
 	{
-		title: "Devlog",
+		title: "Darkwin",
+		position: "Frontend Engineer",
 		description:
-			"This is a Youtube channel I share progress on stuff I'm working on. You'll also find some tutorials on code, 3d, etc. It's fun, check it out!",
-		link: "youtube.com/@notgr",
-		footer: "Please subscribe",
-		icon: "i-lucide-youtube text-red-500 text-lg",
+			"I created user registration pages using Nextjs + Tsoft, and improved rankings",
+		type: "Contract",
+		icon: "i-lucide-sparkle text-blue-500 text-lg",
 	},
 ];
 

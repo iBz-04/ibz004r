@@ -1,8 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
 import ContentList from '../components/ContentList.astro'
-import Link from '../components/Link.astro'
-import PG from '../components/PG.astro'
 import ProjectItem from '../components/ProjectItem.astro'
 import RoadmanCard from '../components/RoadmanCard.astro'
 import { SITE_DESCRIPTION } from '../consts'
@@ -10,6 +8,7 @@ import Shell from '../layouts/Shell.astro'
 import developerTools from '../lib/developer-tools'
 import featuredLinks from '../lib/featured-links'
 import shortenDate from '../lib/shorten-date'
+
 
 const posts = (await getCollection('blog')).sort((a, b) => {
   return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
@@ -37,7 +36,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
       <div class="col-span-1">
         <p class="mt-8">
           My focus lies in Autonomous/Embedded Systems and Image Processing. I am well-versed in Algorithms &
-          Software Development, physics simulation and Electrical Networks. 
+          Software Development, Physics Simulation and Electrical Networks. 
           Additionally I have some background in the field of Genetics and Bioinformatics.
         </p>
 
@@ -58,21 +57,26 @@ const postsList = posts.slice(0, 6).map((post) => ({
           <!-- <cite>&#8212; made it up</cite> -->
         </blockquote>
 
+
+        <p>
+          I'm a student of 
+          <a
+            class="rounded-lg bg-emerald-50 p-1 font-medium text-green-600 no-underline dark:bg-emerald-800 dark:bg-opacity-20"
+            href="https://www.yildiz.edu.tr/">
+            Yildiz Technical University
+          </a>
+          My coursework is centered on Computer & Electrical Engineering, Mathematics and Mechatronics
+        </p>
       </div>
 
-      <p>
-        I'm a student of 
-        <a
-          class="rounded-lg bg-emerald-50 p-1 font-medium text-green-600 no-underline dark:bg-emerald-800 dark:bg-opacity-20"
-          href="https://www.yildiz.edu.tr/">
-          Yildiz Technical University
-        </a>
+    <p>
         <!-- <a
           class="rounded-lg bg-orange-100 p-1 font-medium text-orange-500 no-underline dark:bg-orange-800 dark:bg-opacity-10"
           href="projects">
           stuff I'm working on 🎢
         </a> -->
-        My coursework is centered on Computer & Electrical Engineering, Mathematics and Mechatronics <a
+
+        <!-- <a
           class="rounded-lg bg-indigo-100 p-1 font-medium no-underline dark:bg-indigo-700 dark:bg-opacity-30"
           href="https://discord.gg/5CDnysz">
           <img
@@ -81,18 +85,28 @@ const postsList = posts.slice(0, 6).map((post) => ({
             width="80"
             class="inline"
           />
-        </a> server.
+        </a> server. -->
       </p>
 
     </div>
 
+
+
+
+
+
+
+
+
+    <!-- featured -->
+
     <h2
       class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8"
       id="featured">
-      <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
+      <div class="i-lucide-users-round inline-block opacity-60"></div> Experience
     </h2>
 
-    <div class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:gap-4">
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
       {
         featuredLinks.map((link) => (
           <div class="col-span-1">
@@ -101,27 +115,28 @@ const postsList = posts.slice(0, 6).map((post) => ({
                 {link.icon && <div class:list={['inline-block', link.icon]} />}
                 {link.title}
               </h3>
+              <span class="text-sm font-normal text-gray-500">{link.position}</span>
               <p class="text-secondary mt-0 text-sm">{link.description}</p>
               <div class="pb-2 text-sm">
-                <Link className="font-medium" href={`https://${link.link}`}>
-                  <span class="whitespace-pre-wrap">{link.link}</span>
-                </Link>
+                <p class="text-sm font-normal text-gray-500">
+                  <span class="whitespace-pre-wrap">{link.type}</span>
+                </p> 
               </div>
 
-              {link.featureImage && (
+              {/* {link.featureImage && (
                 <div
                   class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
                   role="img"
                   aria-label={link.title}>
                   <link.featureImage />
                 </div>
-              )}
+              )} */}
             </div>
-            {link.footer && (
+            {/* {link.footer && (
               <p class="text-secondary ms-2 mt-0 text-xs md:ms-4">
                 {link.footer}
               </p>
-            )}
+            )} */}
           </div>
         ))
       }

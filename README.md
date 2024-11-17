@@ -1,5 +1,3 @@
-# GR
+# portfolio
 
-Another one!
-
-![Homepage](public/homepage.png)
+personal one!
