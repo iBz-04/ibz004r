@@ -155,7 +155,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           <div class="i-lucide-library-square"></div>
           <div class="i-lucide-users-round"></div>
           <div class="i-lucide-qr-code"></div>
-          <div class="i-lucide-podcast"></div>
+          <div class="i-lucide-sparkle"></div>
         </div>
       </a>
     </div>
@@ -164,14 +164,14 @@ const postsList = posts.slice(0, 6).map((post) => ({
       <div class="col-span-1 lg:col-span-2">
         <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts">
           <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent
-          posts
+          Articles
         </h2>
 
         <ContentList noTransition items={postsList.slice(0, 1)} />
 
         <div class="text-secondary mt-5">
           view<a class="text-zinc-800 dark:text-neutral-200" href="/blog">
-          all articles
+           more
           </a>
         </div>
       </div>
@@ -221,10 +221,10 @@ const postsList = posts.slice(0, 6).map((post) => ({
           </ul>
 
           <div class="text-secondary mt-5">
-            Check out <a
+            see<a
               class="text-zinc-800 dark:text-neutral-200"
               href="/projects">
-              more projects
+              more
             </a>
           </div>
         </div>

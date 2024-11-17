@@ -1,107 +1,58 @@
 ---
 import ProjectItem from '../components/ProjectItem.astro'
-import RoadmanCard from '../components/RoadmanCard.astro'
 import Shell from '../layouts/Shell.astro'
 
 const startups = [
   {
-    title: 'Adeton',
-    url: 'adeton.io',
+    title: 'Publishing',
+    url: 'islamicpublishing.org',
     description:
-      'This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant. Currently hosting 1000+ shops and processing tens of orders a week. Free to get started',
-    meta: '2021—date',
+      'This is an app, with 1000+ users and a 5.0 rating, where books and articles in various languages are published, users can listen to audiobooks, read and download publishings. The app is available on both play store and app store',
+    meta: '2024—date',
   },
   {
-    title: 'compa',
-    url: 'compa.so',
+    title: 'ISAR',
+    url: 'github.com/iBz-04/ISAR',
     description:
-      'An open initiative to promote collaboration and knowledge sharing among students of higher education.',
+      'The library catalogue system features a responsive UI for users and administrators, allowing easy access across devices, and includes state management to keep track of book availability, borrowings, and returns in real-time.',
   },
 ]
 
 const apps = [
   {
-    title: 'DotLocal',
-    description: 'Mirror your production domains on your .local machine',
-    url: 'degreat.co.uk/dotlocal',
-  },
-  {
-    title: '3e',
-    description: 'Next level 3d workflow inside VSCode.',
-    url: 'github.com/blackmann/3e',
-  },
-  {
-    title: 'fonted',
-    description:
-      "An extension to change the UI font of vscode. That's all it does.",
-    url: 'github.com/blackmann/fonted',
-  },
-  {
-    title: 'stylebender',
-    description:
-      'Generate your styles how you want them and build rapidly. Opensource too.',
-    url: 'stylebender.vercel.app',
-    tags: ['abandoned'],
-  },
-  {
-    title: 'Many Things',
-    description:
-      'Inspired by 1Thing by sindresorhus. 1Thing allowed for setting one goal at a time. But I also needed to be reminded about other stuff — many things. This app runs in the menu bar.',
-    url: 'github.com/blackmann/ManyThings',
-    meta: 'Mac Only',
-  },
-  {
-    title: 'Sawside',
-    description:
-      'How about you make real new friends this new year? That was the tagline. This app was left in TestFlight. Might revive it again.',
-    url: 'sawside.com',
-    meta: 'iOS only',
-    tags: ['abandoned'],
-  },
-  {
-    title: 'aaccraa.com',
-    description:
-      'Connecting strangers and building real connections with live video. Spent a weekend on this proof-of-concept. Deployed midweek and had a surge of 2000 unique visits by end of week.',
-    url: 'aaccraa.com',
-    meta: 'Not restricted to just Accra 🇬🇭',
-  },
-  {
-    title: 'Wipe_Modules',
-    description:
-      "Clean all node_modules from projects that have turned stale. You can select the folder where you keep all your projects and it'll recursively scan for node_modules folders.",
-    meta: 'Mac only',
-    url: 'github.com/blackmann/Wipe_Modules',
+    title: 'E-commerce',
+    description: 'This project involved the development of member sign up and login pages using Next.js & TSOFT, along search rank boosting. the platform’s ranking improved to the 8th (now at 2nd Position) position in competitive search results.',
+    url: 'darkmenshop.com',
   },
 ]
 
 const packages = [
   {
-    title: 'mangobase',
+    title: 'Diabetes-Classifier',
     description:
-      'Low-code Javascript backend framework for Node and Bun runtimes',
-    url: 'github.com/blackmann/mangobase',
+      'This project classifies and predicts instances of diabetic patients using a Support Vector Machine (SVM) algorithm. SVM is a supervised machine learning model that can be used for both classification and regression challenges. It works by finding the hyperplane that best divides a dataset into classes.',
+    url: 'github.com/iBz-04/Diabetes-Classifier',
   },
   {
-    title: 'go-gurl',
-    description: 'Curl TUI with Go as Postman replacement.',
-    url: 'github.com/blackmann/go-gurl',
+    title: 'Reforge',
+    description: 'A fully functional and scalable dashboard starter solution for start-ups, it has mock API calls, authentication, and clean architecture.',
+    url: 'saas-dashboard-starter.netlify.app',
   },
   {
-    title: 'story_view',
+    title: 'ANPR',
+    description: 'I used the canny-edge algorithm and image processing techniques to detect and extract license plate information from cars. It is suitable for applications such as vehicle monitoring systems or parking management.',
+    url: 'github.com/iBz-04/Number-plate-recognition',
+  },
+  {
+    title: 'GeoLib',
     description:
-      'Flutter widget to display stories just like Whatsapp and Instagram. GIF & video support, gestures, animated indicators, fullscreen or inline and full customizability.',
-    url: 'github.com/blackmann/story_view',
+      'This library is a new Python-based geometry package designed to facilitate easy manipulation of shapes. GeoLib aims to be both educational and practical, making it useful for developers, students.',
+    url: 'geolib-docs-main.netlify.app',
   },
   {
-    title: 'react-chat-input',
-    description: 'The missing chat input for React ⚛️',
-    url: 'github.com/blackmann/react-chat-input',
-    meta: 'Stalled development',
-  },
-  {
-    title: 'overlapping-panels',
-    description: 'Discord inspired navigation for Flutter apps',
-    url: 'github.com/blackmann/overlapping_panels',
+    title: 'NOMAD',
+    description: 'To address the issue of overwhelming trip planning, I developed NOMAD to creates personalized travel plans with AI in seconds. The app simplifies travelling by consolidating all essential information into one platform.',
+    url: 'github.com/iBz-04/NOMAD',
   },
 ]
 ---
@@ -111,13 +62,12 @@ const packages = [
     <h1 class="mb-[2rem] text-2xl font-bold">Projects</h1>
 
     <p class="page-half">
-      I've tried many and a lot of things. These are the ones I could collect
-      and showcase; or just proud of them.
+      These are a curation of some projects from internships, jobs and personal endeavours.
     </p>
 
     <h2
       class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
-      <div role="img" class="i-lucide-rocket"></div> Startups
+      <div role="img" class="i-lucide-hand-metal"></div> Erkam Medya
     </h2>
 
     <ul>
@@ -132,7 +82,7 @@ const packages = [
 
     <h2
       class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
-      <div role="img" class="i-lucide-app-window"></div> Apps
+      <div role="img" class="i-lucide-podcast"></div> Darkwin
     </h2>
 
     <div class="col-span-1 grid lg:grid-cols-4 gap-4">
@@ -148,14 +98,14 @@ const packages = [
         </ul>
       </div>
 
-      <div class="col-span-1 col-start-4 hidden lg:block">
+      <!-- <div class="col-span-1 col-start-4 hidden lg:block">
         <RoadmanCard />
-      </div>
+      </div> -->
     </div>
 
     <h2
       class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm uppercase">
-      <div role="img" class="i-lucide-package"></div> Packages
+      <div role="img" class="i-lucide-package"></div> Personal
     </h2>
     <ul>
       {

@@ -1,21 +1,21 @@
 const developerTools = [
   {
-    title: 'Many Things',
+    title: 'Diabetes Classifier',
     description:
-      'Track tasks you need to work on and quickly list ideas right from the menu bar.',
-    url: 'github.com/blackmann/ManyThings'
+      'Predicts instances of diabetic & non-diabetic patients with great accuracy.',
+    url: 'github.com/iBz-04/Diabetes-Classifier'
   },
   {
-    title: 'DotLocal',
+    title: 'Occurence',
     description:
-      'Mirror your production domains on your .local machine',
-    url: 'degreat.co.uk/dotlocal',
+      'A system for managing crime documentation in police stations.',
+    url: 'github.com/iBz-04/Occurence',
   },
   {
-    title: 'Wipe_Modules',
+    title: 'NOMAD',
     description:
-      'Clean stale node_modules from old projects and reclaim disk space. Mac only.',
-    url: 'github.com/blackmann/Wipe_Modules',
+      'Generate travel plans in Seconds with Artificial Intelligence',
+    url: 'github.com/iBz-04/NOMAD',
   },
 ]
 
