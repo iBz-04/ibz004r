@@ -1,0 +1,137 @@
+---
+const inDev = process.env.NODE_ENV !== 'production'
+---
+
+<canvas
+  id="pc-canvas"
+  style="background-color: transparent;"
+  height="260"
+  class="border"
+  width="300">
+</canvas>
+
+<script>
+  import {
+    Mesh,
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    AmbientLight,
+    DirectionalLight,
+    LineBasicMaterial,
+    EdgesGeometry,
+    LineSegments,
+    MeshStandardMaterial,
+    PointLight,
+    RectAreaLight,
+    DirectionalLightHelper,
+    SpotLightHelper,
+    Plane,
+    ShadowMaterial,
+    PlaneGeometry,
+    MeshBasicMaterial,
+  } from 'three'
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
+  const canvas = document.querySelector('#pc-canvas') as HTMLCanvasElement
+  const scene = new Scene()
+  const camera = new PerspectiveCamera(
+    30,
+    canvas.width / canvas.height,
+    0.1,
+    1000,
+  )
+  const renderer = new WebGLRenderer({ canvas })
+  renderer.setSize(canvas.width, canvas.height)
+  renderer.shadowMap.enabled = true
+  renderer.setPixelRatio(window.devicePixelRatio)
+
+  renderer.setClearColor(0xf4f4f5)
+
+  camera.position.set(0, 0, 5.3)
+  const caseMaterial = new MeshStandardMaterial({
+    color: 0xe4e3e2,
+    roughness: 0.4,
+  })
+
+  // Mark: Model
+  new GLTFLoader().load('/macintoshhh.glb', (glb) => {
+    scene.add(glb.scene)
+
+    for (const i of glb.scene.children) {
+      if (i.type !== 'Mesh') {
+        continue
+      }
+
+      const mesh = i as Mesh
+      mesh.material = caseMaterial
+      mesh.castShadow = true
+      mesh.receiveShadow = true
+
+      // scene.add(mesh)
+    }
+  })
+
+  // Mark: Ambient Light
+  const al = new AmbientLight()
+  scene.add(al)
+
+  // Mark: Directional Light
+  const dl = new DirectionalLight()
+  dl.castShadow = true
+  scene.add(dl)
+
+  // Mark: Area Light
+  const pl = new RectAreaLight()
+  pl.position.z = 2
+  pl.intensity = 0.45
+  scene.add(pl)
+
+  // Mark: Shadow catcher
+  const sc = new Mesh(new PlaneGeometry(3, 3), new ShadowMaterial({opacity: 0.5}))
+  sc.rotation.set(-Math.PI / 2, 0, 0)
+  sc.position.set(0, -1, 0)
+  sc.receiveShadow = true
+  scene.add(sc)
+
+  window.addEventListener('resize', () => [
+    renderer.setPixelRatio(window.devicePixelRatio),
+  ])
+
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+  if (mediaQuery.matches) {
+    dark()
+  }
+
+  const listener = (e: MediaQueryListEvent) => {
+    if (e.matches) {
+      dark()
+    } else {
+      light()
+    }
+  }
+
+  mediaQuery.addEventListener('change', listener)
+
+  function dark() {
+    renderer.setClearColor(0x171717)
+    dl.intensity = 0.1
+    al.intensity = 0.1
+  }
+
+  function light() {
+    renderer.setClearColor(0xf4f4f5)
+    dl.intensity = 1
+    al.intensity = 1
+  }
+
+  new OrbitControls(camera, canvas)
+  function animate() {
+    renderer.render(scene, camera)
+    window.requestAnimationFrame(animate)
+  }
+
+  animate()
+</script>

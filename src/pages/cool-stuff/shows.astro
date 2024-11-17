@@ -1,0 +1,49 @@
+---
+import CoolLinks from '../../components/CoolLinks.astro'
+import Shell from '../../layouts/Shell.astro'
+
+const shows = [
+  {
+    title: 'Breaking Bad',
+    description: "You have to see this for yourself. It's an amazing story.",
+    rating: '4.7/5',
+  },
+  {
+    title: 'Ozark',
+    description:
+      'Ruth Langmore! This series really hooked me up from episode 1 to season finale. ',
+    rating: '5/5',
+  },
+
+  {
+    title: 'Better Call Saul',
+    description:
+      'Saul is such a lawyer. Bob Odenkirk is such an actor. This show is spotlight on a character in Breaking; Saul Goodman/Jimmy McGill.',
+    rating: '4.6/5',
+  },
+]
+---
+
+<Shell title="Cool Shows" description="Movies or TV shows that were well done">
+  <main class="container mt-[8rem] min-h-[60vh]">
+    <CoolLinks />
+
+    <h1 class="text-xl font-bold">Cool shows 📺</h1>
+
+    <p class="text-secondary page-half">
+      I learned as much as I was entertained
+    </p>
+
+    <div class="mt-[5rem] grid grid-cols-1 gap-4 gap-y-8 lg:grid-cols-3">
+      {
+        shows.map((show) => (
+          <div class="col-span-1">
+            <div class="font-bold">{show.title}</div>
+            <p class="text-secondary">{show.description}</p>
+            <p class="text-secondary">{show.rating}</p>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Shell>

@@ -1,0 +1,10 @@
+---
+import { HiraganaFlashcard } from '../components/HiraganaFlashcard'
+import Shell from '../layouts/Shell.astro'
+---
+
+<Shell title="Hiragana Flashcards" description="Learn Hiragana with confidence">
+  <main class="container pt-8">
+    <HiraganaFlashcard client:load />
+  </main>
+</Shell>

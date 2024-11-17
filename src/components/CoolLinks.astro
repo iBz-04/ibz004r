@@ -1,0 +1,36 @@
+---
+import NavLink from './NavLink.astro'
+const topics = [
+  { title: 'Apps', slug: 'apps' },
+  { title: 'People', slug: 'people' },
+  { title: 'Websites', slug: 'websites' },
+  { title: 'Repositories', slug: 'repositories' },
+  { title: 'Shows/Movies', slug: 'shows' },
+]
+---
+
+<div class="text-secondary mt-3 sm:hidden">
+  Swipe horizontally on the links to reveal others 👉🏽
+</div>
+
+<ul class="list-unstyled hover-link">
+  {
+    topics.map((topic) => (
+      <li class="py-2">
+        <NavLink href={`/cool-stuff/${topic.slug}`}>{topic.title}</NavLink>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  li {
+    margin-right: 1rem;
+  }
+</style>

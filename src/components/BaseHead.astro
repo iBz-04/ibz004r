@@ -1,0 +1,66 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import "mafs/core.css";
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+	description: string;
+	image?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
+<link rel="icon" type="image/svg+xml" href="/o.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title} | GR</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+{
+	process.env.NODE_ENV === 'production' && (
+	<!-- Umami -->
+<script async src="https://analytics.umami.is/script.js" data-website-id="6cc8bf19-147d-45a2-b7c9-75b7c1b607bf"></script>
+	<!-- Observe Prod -->
+<script src="https://0.observe.so/script.js" data-app="clws46cwl00go8k13jz4apght" />
+	)
+}
+
+{
+	process.env.NODE_ENV !== 'production' && (
+	<!-- Observe Local -->
+<script async src="https://observe.local/script.js" data-app="clwnp4jnp0000ze4wmdyiawle"></script>
+	)
+}
+
+<script src="../lib/analytics.js"></script>
+<script src="../lib/favislide.js"></script>
+
+<ViewTransitions />

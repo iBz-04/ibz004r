@@ -1,0 +1,110 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import FormattedDate from '../components/FormattedDate.astro'
+import type { MarkdownHeading } from 'astro'
+import DotLocalAd from '../components/DotLocalAd.astro'
+import Loader from '../components/Loader.astro'
+
+type Props = CollectionEntry<'blog'> & {
+  headings: MarkdownHeading[]
+}
+
+const { headings: headingsRaw, data, slug } = Astro.props
+const { pubDate, tags, title, description } = data
+
+const headings = headingsRaw.filter(
+  (h) => h.depth < 4 && h.text !== 'Footnotes',
+)
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      image={`/og/${slug}.png`}
+      title={title!}
+      description={description!}
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <Loader />
+    <Header />
+
+    <main class="container mt-[8rem] scroll-smooth">
+      <article>
+        <div>
+          <h1
+            class="mt-2 inline text-2xl font-bold"
+            transition:name={`page-title:${title}`}>
+            {title}
+          </h1>
+        </div>
+        <div class="mb-[4rem] text-zinc-500 dark:text-neutral-400">
+          <ul class="ms-0 flex list-none gap-2">
+            <li>
+              <div
+                class="inline rounded-lg bg-zinc-200 px-2 font-mono text-sm dark:bg-neutral-800">
+                <FormattedDate date={pubDate} />
+              </div>
+            </li>
+            {
+              tags?.map((tag) => (
+                <li class="mt-0">
+                  <code class="rounded-md bg-blue-100 px-2 dark:bg-neutral-800">
+                    {tag}
+                  </code>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+          <div class="col-span-1 lg:col-span-3">
+            <slot />
+          </div>
+
+          <aside class="col-span-1 hidden lg:block">
+            <div class="sticky top-8">
+              {
+                headings.length > 1 && (
+                  <div class="rounded-lg bg-zinc-200 bg-opacity-40 p-2 dark:bg-neutral-800">
+                    <header class="mb-2 flex items-center gap-2 rounded-lg bg-zinc-200 p-1 font-bold dark:bg-neutral-700">
+                      <span class="i-lucide-split-square-vertical text-secondary" />
+                      Jump to
+                    </header>
+
+                    <ul class="mx-2 list-none">
+                      {headings.map((h) => (
+                        <li>
+                          <a
+                            class="no-underline hover:underline"
+                            class:list={[{ 'ms-4': h.depth === 3 }]}
+                            href={`#${h.slug}`}>
+                            {h.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              }
+
+              <div class="mt-2 w-[8rem]">
+                <DotLocalAd />
+              </div>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>

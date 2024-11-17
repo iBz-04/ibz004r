@@ -1,0 +1,46 @@
+---
+interface ContentItem {
+  title: string
+  meta?: string
+  link: string
+  tags?: string[]
+}
+
+interface Props {
+  items: ContentItem[]
+  noTransition?: boolean
+}
+
+const { items, noTransition } = Astro.props
+---
+
+<ul class="hover-link">
+  {
+    items.map((item) => (
+      <li class="[&+&]:border-t-1 border-t-zinc-200 dark:border-t-neutral-800 [&+&]:border-t">
+        <a
+          class="flex justify-between gap-2 px-2 py-2 no-underline"
+          href={item.link}>
+          <div class="flex-1 font-medium">
+            <span
+              transition:name={noTransition ? '' : `page-title:${item.title}`}>
+              {item.title}
+            </span>
+            {item.tags && (
+              <ul class="inline-flex gap-2">
+                {item.tags?.map((tag) => (
+                  <li>
+                    <code class="rounded-md bg-blue-100 px-1 font-normal dark:bg-neutral-800">
+                      {tag}
+                    </code>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <span class="text-secondary text-end text-sm">{item.meta}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

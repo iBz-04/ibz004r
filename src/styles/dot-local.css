@@ -1,0 +1,11 @@
+:root {
+	@apply text-slate-700;
+}
+
+.container {
+	@apply max-w-[960px] mx-auto px-2;
+}
+
+.text-secondary {
+	@apply text-slate-500;
+}

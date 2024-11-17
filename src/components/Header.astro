@@ -1,0 +1,81 @@
+---
+import NavLink from './NavLink.astro'
+---
+
+<header class="container mx-auto">
+  <header class="mb-[2rem] flex items-center justify-between py-3">
+    <img
+      src="/okgr.svg"
+      alt="okgr"
+      class="h-[18px]"
+      height="18"
+      width="60.42"
+    />
+
+    <div
+      class="flex items-center gap-1 rounded-full border border-zinc-300 bg-zinc-200 bg-opacity-40 px-1 text-zinc-600 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+      <NavLink
+        class="!p-1"
+        href="mailto:mail@degreat.co.uk"
+        target="_blank"
+        aria-label="My mail">
+        <span class="i-lucide-mail" title="My mail" role="img"></span>
+      </NavLink>
+
+      <NavLink
+        class="!p-1"
+        href="https://twitter.com/_yogr"
+        target="_blank"
+        aria-label="Twitter">
+        <span class="i-lucide-twitter" title="Twitter" role="img"></span>
+      </NavLink>
+
+      <NavLink
+        class="!p-1"
+        href="https://github.com/blackmann"
+        target="_blank"
+        aria-label="Github">
+        <span class="i-lucide-github" title="Github" role="img"></span>
+      </NavLink>
+    </div>
+  </header>
+
+  <nav class="hover-link flex items-center gap-2 overflow-y-auto">
+    <NavLink href="/">
+      <div
+        class="i-lucide-home hidden opacity-50 group-[.is-active]:inline-block">
+      </div> Home
+    </NavLink>
+
+    <NavLink href="/projects">
+      <div
+        class="i-lucide-croissant hidden opacity-50 group-[.is-active]:inline-block">
+      </div>Projects
+    </NavLink>
+
+    <NavLink href="/blog">
+      <div
+        class="i-lucide-cassette-tape hidden opacity-50 group-[.is-active]:inline-block">
+      </div>
+      Blog
+    </NavLink>
+
+    <NavLink class="relative" href="https://courses.degreat.co.uk/">
+      <div
+        class="i-lucide-graduation-cap hidden opacity-50 group-[.is-active]:inline-block">
+      </div>
+
+      Courses <div class="absolute -top-2 right-0">
+        <small class="inline-block size-2 rounded-md bg-amber-500 text-white">
+        </small>
+      </div>
+    </NavLink>
+
+    <NavLink href="/about">
+      <div
+        class="i-lucide-user hidden opacity-50 group-[.is-active]:inline-block">
+      </div>
+      About
+    </NavLink>
+  </nav>
+</header>

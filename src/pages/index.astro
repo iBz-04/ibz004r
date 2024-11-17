@@ -1,0 +1,227 @@
+---
+import { getCollection } from 'astro:content'
+import ContentList from '../components/ContentList.astro'
+import Link from '../components/Link.astro'
+import PG from '../components/PG.astro'
+import ProjectItem from '../components/ProjectItem.astro'
+import RoadmanCard from '../components/RoadmanCard.astro'
+import { SITE_DESCRIPTION } from '../consts'
+import Shell from '../layouts/Shell.astro'
+import developerTools from '../lib/developer-tools'
+import featuredLinks from '../lib/featured-links'
+import shortenDate from '../lib/shorten-date'
+
+const posts = (await getCollection('blog')).sort((a, b) => {
+  return b.data.pubDate!.getTime() - a.data.pubDate!.getTime()
+})
+
+const postsList = posts.slice(0, 6).map((post) => ({
+  link: `/blog/${post.slug}`,
+  meta: shortenDate(post.data.pubDate!),
+  title: post.data.title,
+}))
+---
+
+<Shell title="Hi 👋🏽" description={SITE_DESCRIPTION}>
+  <main class="container mx-auto mt-[8rem]">
+    <!-- <div
+      title="Twi language: means Welcome"
+      class="inline-block rounded-xl border border-pink-200 bg-pink-100 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:border-green-800 dark:bg-green-300 dark:bg-opacity-10 dark:text-green-500">
+      <div class="i-lucide-hand-metal inline-block !text-sm"></div> i'm Ibrahim
+    </div> -->
+
+    <h1 class="mt-0 text-lg font-bold">I'm Ibrahim</h1>
+    <p class="mt-0 text-secondary">An engineering student</p>
+
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+      <div class="col-span-1">
+        <p class="mt-8">
+          My focus lies in Autonomous/Embedded Systems and Image Processing. I am well-versed in Algorithms &
+          Software Development, Mathematical modeling and Electrical Networks. 
+          Additionally I have some background in the field of Genetics
+        </p>
+
+        <p>
+          On this site, you'll find a few things I want you to know
+          <a
+            class="rounded-lg bg-emerald-50 p-1 font-medium text-green-600 no-underline dark:bg-emerald-800 dark:bg-opacity-20"
+            href="about">
+            about me 🙈
+          </a> or <a
+            class="rounded-lg bg-orange-100 p-1 font-medium text-orange-500 no-underline dark:bg-orange-800 dark:bg-opacity-10"
+            href="projects">
+            stuff I'm working on 🎢
+          </a>. If you want to know more and keep up, try following my socials
+          or join my <a
+            class="rounded-lg bg-indigo-100 p-1 font-medium no-underline dark:bg-indigo-700 dark:bg-opacity-30"
+            href="https://discord.gg/5CDnysz">
+            <img
+              src="/discord-logo-blue.svg"
+              alt="Discord"
+              width="80"
+              class="inline"
+            />
+          </a> server.
+        </p>
+
+        <blockquote class="text-secondary mt-4">
+          <p>
+            Technical skills: 
+          </p>
+
+          <ul>
+            <li>- PYTHON, PHP, JAVASCRIPT, C</li>
+            <li>- ROBOT OPERATING SYSTEM 2</li>
+            <li>- GAZEBO HARMONIC</li>
+            <li>- LINUX, GIT, VIM</li>
+            <li>- MySQL, MONGODB</li>
+            <li>- FIREBASE, SUPABASE</li>
+          </ul>
+    
+          <!-- <cite>&#8212; made it up</cite> -->
+        </blockquote>
+
+      </div>
+
+      <div class="col-span-1 mt-8 flex flex-col items-center lg:mt-0">
+        <!-- <ArtSlides client:load /> -->
+        <!-- <Matrix /> -->
+      </div>
+    </div>
+
+    <h2
+      class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8"
+      id="featured">
+      <div class="i-lucide-book-heart inline-block opacity-60"></div> Featured
+    </h2>
+
+    <div class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:gap-4">
+      {
+        featuredLinks.map((link) => (
+          <div class="col-span-1">
+            <div class="card !max-md:px-2 !max-md:pt-2 !pb-0">
+              <h3 class="flex items-center gap-2 font-bold">
+                {link.icon && <div class:list={['inline-block', link.icon]} />}
+                {link.title}
+              </h3>
+              <p class="text-secondary mt-0 text-sm">{link.description}</p>
+              <div class="pb-2 text-sm">
+                <Link className="font-medium" href={`https://${link.link}`}>
+                  <span class="whitespace-pre-wrap">{link.link}</span>
+                </Link>
+              </div>
+
+              {link.featureImage && (
+                <div
+                  class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
+                  role="img"
+                  aria-label={link.title}>
+                  <link.featureImage />
+                </div>
+              )}
+            </div>
+            {link.footer && (
+              <p class="text-secondary ms-2 mt-0 text-xs md:ms-4">
+                {link.footer}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 flex">
+      <a
+        href="https://compa.so"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-4 rounded-lg border border-yellow-500 bg-amber-400 px-2 py-1 font-bold text-black no-underline">
+        <div class="text-sm">— compa is your companion</div>
+        <div class="flex gap-2 opacity-80">
+          <div class="i-lucide-message-circle"></div>
+          <div class="i-lucide-calendar-range"></div>
+          <div class="i-lucide-library-square"></div>
+          <div class="i-lucide-sparkle"></div>
+          <div class="i-lucide-users-round"></div>
+          <div class="i-lucide-shopping-bag"></div>
+          <div class="i-lucide-gamepad-2"></div>
+        </div>
+      </a>
+    </div>
+
+    <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
+      <div class="col-span-1 lg:col-span-2">
+        <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts">
+          <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent
+          posts
+        </h2>
+
+        <ContentList noTransition items={postsList.slice(0, 6)} />
+
+        <div class="text-secondary mt-5">
+          See <a class="text-zinc-800 dark:text-neutral-200" href="/blog">
+            all posts
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-[4rem]">
+      <div class="flex gap-2">
+        <a
+          class="py-0.8 inline-flex items-center gap-2 rounded-lg border-2 border-dashed border-zinc-300 bg-zinc-200 px-2 font-medium no-underline hover:border-zinc-400 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
+          href="/instax/request">
+          <div class="i-lucide-instagram inline-block opacity-50"></div>
+          Instax Print
+        </a>
+
+        <a
+          class="py-0.8 inline-flex items-center gap-2 rounded-lg border-2 border-dashed border-zinc-300 bg-zinc-200 px-2 font-medium no-underline hover:border-zinc-400 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
+          href="/lesson-notes">
+          <div class="i-lucide-sigma-square inline-block opacity-50"></div>
+          Lesson notes
+        </a>
+
+        <a
+          class="py-0.8 inline-flex items-center gap-2 rounded-lg border-2 border-dashed border-zinc-300 bg-zinc-200 px-2 font-medium no-underline hover:border-zinc-400 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600"
+          href="/hiragana">
+          <div class="i-lucide-languages inline-block opacity-50"></div>
+          Hiragana
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-[4rem]">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <div class="col-span-1 lg:col-span-2">
+          <h2 class="mb-4 flex items-center gap-2 font-bold">
+            <div class="i-lucide-terminal-square inline-block opacity-60"></div>
+            Developer Packages
+          </h2>
+
+          <ul>
+            {
+              developerTools.map((pkg) => (
+                <li>
+                  <ProjectItem project={pkg} />
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="text-secondary mt-5">
+            Check out <a
+              class="text-zinc-800 dark:text-neutral-200"
+              href="/projects">
+              more projects
+            </a>
+          </div>
+        </div>
+
+        <div class="col-span-1 lg:col-start-4">
+          <RoadmanCard />
+        </div>
+      </div>
+    </section>
+  </main>
+</Shell>

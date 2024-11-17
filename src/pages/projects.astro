@@ -1,0 +1,170 @@
+---
+import ProjectItem from '../components/ProjectItem.astro'
+import RoadmanCard from '../components/RoadmanCard.astro'
+import Shell from '../layouts/Shell.astro'
+
+const startups = [
+  {
+    title: 'Adeton',
+    url: 'adeton.io',
+    description:
+      'This is a SaaS project I founded; an e-commerce enabler. Think Shopify but tailored for the Ghanaian merchant. Currently hosting 1000+ shops and processing tens of orders a week. Free to get started',
+    meta: '2021—date',
+  },
+  {
+    title: 'compa',
+    url: 'compa.so',
+    description:
+      'An open initiative to promote collaboration and knowledge sharing among students of higher education.',
+  },
+]
+
+const apps = [
+  {
+    title: 'DotLocal',
+    description: 'Mirror your production domains on your .local machine',
+    url: 'degreat.co.uk/dotlocal',
+  },
+  {
+    title: '3e',
+    description: 'Next level 3d workflow inside VSCode.',
+    url: 'github.com/blackmann/3e',
+  },
+  {
+    title: 'fonted',
+    description:
+      "An extension to change the UI font of vscode. That's all it does.",
+    url: 'github.com/blackmann/fonted',
+  },
+  {
+    title: 'stylebender',
+    description:
+      'Generate your styles how you want them and build rapidly. Opensource too.',
+    url: 'stylebender.vercel.app',
+    tags: ['abandoned'],
+  },
+  {
+    title: 'Many Things',
+    description:
+      'Inspired by 1Thing by sindresorhus. 1Thing allowed for setting one goal at a time. But I also needed to be reminded about other stuff — many things. This app runs in the menu bar.',
+    url: 'github.com/blackmann/ManyThings',
+    meta: 'Mac Only',
+  },
+  {
+    title: 'Sawside',
+    description:
+      'How about you make real new friends this new year? That was the tagline. This app was left in TestFlight. Might revive it again.',
+    url: 'sawside.com',
+    meta: 'iOS only',
+    tags: ['abandoned'],
+  },
+  {
+    title: 'aaccraa.com',
+    description:
+      'Connecting strangers and building real connections with live video. Spent a weekend on this proof-of-concept. Deployed midweek and had a surge of 2000 unique visits by end of week.',
+    url: 'aaccraa.com',
+    meta: 'Not restricted to just Accra 🇬🇭',
+  },
+  {
+    title: 'Wipe_Modules',
+    description:
+      "Clean all node_modules from projects that have turned stale. You can select the folder where you keep all your projects and it'll recursively scan for node_modules folders.",
+    meta: 'Mac only',
+    url: 'github.com/blackmann/Wipe_Modules',
+  },
+]
+
+const packages = [
+  {
+    title: 'mangobase',
+    description:
+      'Low-code Javascript backend framework for Node and Bun runtimes',
+    url: 'github.com/blackmann/mangobase',
+  },
+  {
+    title: 'go-gurl',
+    description: 'Curl TUI with Go as Postman replacement.',
+    url: 'github.com/blackmann/go-gurl',
+  },
+  {
+    title: 'story_view',
+    description:
+      'Flutter widget to display stories just like Whatsapp and Instagram. GIF & video support, gestures, animated indicators, fullscreen or inline and full customizability.',
+    url: 'github.com/blackmann/story_view',
+  },
+  {
+    title: 'react-chat-input',
+    description: 'The missing chat input for React ⚛️',
+    url: 'github.com/blackmann/react-chat-input',
+    meta: 'Stalled development',
+  },
+  {
+    title: 'overlapping-panels',
+    description: 'Discord inspired navigation for Flutter apps',
+    url: 'github.com/blackmann/overlapping_panels',
+  },
+]
+---
+
+<Shell title="Projects" description="Stuff I have worked on.">
+  <main class="container mx-auto mt-[8rem]">
+    <h1 class="mb-[2rem] text-2xl font-bold">Projects</h1>
+
+    <p class="page-half">
+      I've tried many and a lot of things. These are the ones I could collect
+      and showcase; or just proud of them.
+    </p>
+
+    <h2
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
+      <div role="img" class="i-lucide-rocket"></div> Startups
+    </h2>
+
+    <ul>
+      {
+        startups.map((project) => (
+          <li class="">
+            <ProjectItem project={project} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
+      <div role="img" class="i-lucide-app-window"></div> Apps
+    </h2>
+
+    <div class="col-span-1 grid lg:grid-cols-4 gap-4">
+      <div class="col-span-3">
+        <ul>
+          {
+            apps.map((app) => (
+              <li class="">
+                <ProjectItem project={app} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="col-span-1 col-start-4 hidden lg:block">
+        <RoadmanCard />
+      </div>
+    </div>
+
+    <h2
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm uppercase">
+      <div role="img" class="i-lucide-package"></div> Packages
+    </h2>
+    <ul>
+      {
+        packages.map((project) => (
+          <li>
+            <ProjectItem project={project} />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Shell>

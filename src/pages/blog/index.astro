@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content'
+import ContentList from '../../components/ContentList.astro'
+import Shell from '../../layouts/Shell.astro'
+import shortenDate from '../../lib/shorten-date'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => (b.data.pubDate as Date).valueOf() - (a.data.pubDate as Date).valueOf(),
+)
+
+const postsList = posts.map((post) => ({
+  link: `/blog/${post.slug}`,
+  meta: shortenDate(post.data.pubDate as Date),
+  title: post.data.title,
+  tags: post.data.tags,
+}))
+---
+
+<Shell title="Blog" description="My own words, shaped by my experience.">
+  <main class="container mx-auto mt-[8rem] min-h-[60vh]">
+    <h1 class="font-bold">{posts.length} posts published</h1>
+
+    <p class="text-secondary max-w-[480px]">
+      These are my own words. Shaped by my own experiences. If you find
+      something confusing, wrong or misleading, please let me know. If you find
+      anything helpful, please consider sharing to your friends.
+    </p>
+
+    <section class="mt-[5rem]">
+      <ContentList items={postsList} />
+    </section>
+  </main>
+</Shell>
