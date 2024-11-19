@@ -17,7 +17,7 @@ export default defineConfig({
 	server: {
 		preTransformRequests: false
 	  },
-	site: "https://ibz004r.vercel.app/",
+	site: "https://www.ibz04.pro/",
 	integrations: [
 		mdx(),
 		sitemap(),
