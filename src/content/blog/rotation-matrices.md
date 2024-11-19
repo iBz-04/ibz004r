@@ -28,7 +28,7 @@ we can convert the representation of a vector from one coordinate system to anot
 - Body Frame: This coordinate system moves and rotates with the quadcopter, with its own x, y, and z axes aligned to the craft’s orientation.
 - Inertial Frame: This is a fixed coordinate system, usually defined relative to the ground, representing Earth’s x, y, and z axes.
 
-### Movement
+## Movement
 
 When the quadcopter performs movements such as yaw, pitch, or roll, vectors in its body frame must be converted to the inertial frame for accurate computation of movement, orientation, and external interactions. This transformation is essential for navigation systems, trajectory planning, and understanding how the quadcopter behaves relative to the Earth.
 
@@ -54,7 +54,7 @@ Suppose the quadcopter tilts and rotates mid-flight. You need to know where "for
 
 Years ago, Google was my favorite company in the world. It was a place I wanted to work at. But in the recent years, Google doesn't seem like an exciting place anymore. On a more personal level, Google has a terrible dark mode experience on a lot of their web products — dark modes don't reflect until the page reflects. Instead of focusing resources and efforts on such an easy problem, this is what they can do?
 
-### Conclusion
+## Conclusion
 
 The quadcopter's motion involves complex kinematics where the body’s position and orientation need to be managed using the speeds of its four rotors. The relationship between body movements and world movements is defined through a rotation matrix 
 𝑅, which captures how the body frame's orientation maps to the fixed inertial frame. This matrix is crucial for designing controllers that can direct the quadcopter's movement and stabilize it in flight.
