@@ -85,7 +85,7 @@ function BlogTag() {
 					fontSize: 26,
 				}}
 			>
-				/blog
+				/articles
 			</div>
 		</div>
 	);
@@ -127,8 +127,8 @@ function SiteTag({ resources }: Pick<Props, "resources">) {
 					background: "#41AA4C2E",
 				}}
 			>
-				<div style={{ color: "white" }}>degreat.co.uk</div>
-				<div style={{ color: "#67C571" }}>/blog</div>
+				<div style={{ color: "white" }}>ibz04.pro</div>
+				<div style={{ color: "#67C571" }}>/articles</div>
 				<img
 					height={20}
 					style={{ marginLeft: 15 }}
