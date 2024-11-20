@@ -102,7 +102,6 @@ function Footer({ resources }: Pick<Props, "resources">) {
 		>
 			<SiteTag resources={resources} />
 
-			<img height={150} src={resources.logo} alt="Logo" />
 		</div>
 	);
 }
