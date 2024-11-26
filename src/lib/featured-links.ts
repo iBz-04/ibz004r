@@ -1,6 +1,15 @@
 
 const featuredLinks = [
 	{
+		title: "OmniBot AI",
+		position: "Founder",
+		description:
+			"Built an interfaces to provide offline and local AI services for users",
+			type: "Startup",
+			icon: "i-lucide-qr-code text-blue-500 text-lg",
+		
+	},
+	{
 		title: "Erkam Medya",
 		position: "Backend Engineer",
 		description:

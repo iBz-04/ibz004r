@@ -1,6 +1,6 @@
 ---
 title: "Rotation Matrices in Quadcopter dynamics"
-description: "Understanding Rotation Matrices and 3D transofrmations"
+description: "Understanding Rotation Matrices and 3D transformations"
 pubDate: "Oct 3, 2024"
 tags:
   - Linear Algebra
@@ -51,8 +51,6 @@ These rotations give us the full rotation matrix 𝑅:
 Suppose the quadcopter tilts and rotates mid-flight. You need to know where "forward" points now from the ground's perspective (in the inertial frame). By applying 𝑅 to a vector pointing forward in the body frame, you get a new vector showing where that direction is pointing from the ground's view.
 
 - This is crucial for controlling the quadcopter’s motion relative to the ground and understanding how it interacts with the environment.
-
-Years ago, Google was my favorite company in the world. It was a place I wanted to work at. But in the recent years, Google doesn't seem like an exciting place anymore. On a more personal level, Google has a terrible dark mode experience on a lot of their web products — dark modes don't reflect until the page reflects. Instead of focusing resources and efforts on such an easy problem, this is what they can do?
 
 ## Conclusion
 
