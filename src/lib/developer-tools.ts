@@ -6,16 +6,16 @@ const developerTools = [
     url: 'github.com/iBz-04/Diabetes-Classifier'
   },
   {
-    title: 'Occurence',
+    title: 'PEEK',
     description:
-      'A system for managing crime documentation in police stations.',
-    url: 'github.com/iBz-04/Occurence',
+      'Render components before in real-time before adding them to your projects',
+    url: 'peek.vercel.app',
   },
   {
-    title: 'NOMAD',
+    title: 'Lara API',
     description:
-      'Generate travel plans in Seconds with Artificial Intelligence',
-    url: 'github.com/iBz-04/NOMAD',
+      'REST API & CRUD architecture, integrable with any Frontend framework',
+    url: 'github.com/iBz-04/Lara',
   },
 ]
 
