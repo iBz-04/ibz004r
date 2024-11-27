@@ -6,9 +6,9 @@ const developerTools = [
     url: 'github.com/iBz-04/Diabetes-Classifier'
   },
   {
-    title: 'PEEK',
+    title: 'Peek',
     description:
-      'Render components before in real-time before adding them to your projects',
+      'Render components in real-time before adding them to your projects',
     url: 'peek.vercel.app',
   },
   {
