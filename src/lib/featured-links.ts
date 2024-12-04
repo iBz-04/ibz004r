@@ -1,10 +1,10 @@
 
 const featuredLinks = [
 	{
-		title: "OmniBot AI",
+		title: "OmniSoft llc",
 		position: "Founder",
 		description:
-			"Built interfaces to provide offline and private LLM & SLM services for users",
+			"Building interfaces to provide offline and private LLM & SLM services for users",
 			type: "Startup",
 			icon: "i-lucide-qr-code text-blue-500 text-lg",
 		
