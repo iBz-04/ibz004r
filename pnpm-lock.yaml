@@ -44,6 +44,9 @@ importers:
       '@unocss/preset-icons':
         specifier: ^0.58.3
         version: 0.58.9
+      '@vercel/analytics':
+        specifier: ^1.4.1
+        version: 1.4.1(react@18.3.1)
       astro:
         specifier: ^4.9.1
         version: 4.16.13(@types/node@22.9.0)(rollup@4.27.2)(typescript@5.6.3)
@@ -1127,6 +1130,32 @@ packages:
     resolution: {integrity: sha512-Yy19y6O2GJq8f7CHf7L0nxL8bf4PZCPaVOCgJrusOeFHY1LvHgYXnmnXg6N5iwAnbgbZCDjo60SiM6IPJi9C5g==}
     peerDependencies:
       react: '>= 16.8.0'
+
+  '@vercel/analytics@1.4.1':
+    resolution: {integrity: sha512-ekpL4ReX2TH3LnrRZTUKjHHNpNy9S1I7QmS+g/RQXoSUQ8ienzosuX7T9djZ/s8zPhBx1mpHP/Rw5875N+zQIQ==}
+    peerDependencies:
+      '@remix-run/react': ^2
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@vitejs/plugin-react@4.3.3':
     resolution: {integrity: sha512-NooDe9GpHGqNns1i8XDERg0Vsg5SSYRhRxxyTGogUdkdNt47jal+fbuYi+Yfq6pzRCKXyoPcWisfxE6RIM3GKA==}
@@ -4251,6 +4280,10 @@ snapshots:
   '@use-gesture/react@10.3.1(react@18.3.1)':
     dependencies:
       '@use-gesture/core': 10.3.1
+      react: 18.3.1
+
+  '@vercel/analytics@1.4.1(react@18.3.1)':
+    optionalDependencies:
       react: 18.3.1
 
   '@vitejs/plugin-react@4.3.3(vite@5.4.11(@types/node@22.9.0))':
