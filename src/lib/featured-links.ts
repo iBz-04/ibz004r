@@ -1,11 +1,11 @@
 
 const featuredLinks = [
 	{
-		title: "OmniSoft llc",
-		position: "Founder",
+		title: "Inventra AI",
+		position: "Software Engineer II",
 		description:
-			"Building innovative, secure and artificial intelligence powered platforms ",
-			type: "Startup",
+			"Codebase migration: react native to kotlin, Investment acquisition, LLM integration",
+			type: "Internship",
 			icon: "i-lucide-qr-code text-blue-500 text-lg",
 		
 	},
@@ -22,7 +22,7 @@ const featuredLinks = [
 		title: "Erkam Medya",
 		position: "Software Engineer I",
 		description:
-			"I worked on a Library catalogue system for 100+ users with Laravel & MySQL",
+			"I developed a fullstack Library catalogue system with Laravel & MySQL",
 		type: "Internship",
 		icon: "i-lucide-hand-metal text-green-500 text-lg",
 	},

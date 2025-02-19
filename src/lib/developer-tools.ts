@@ -18,10 +18,10 @@ const developerTools = [
     url: 'omnipad.live'
   },
   {
-    title: 'Diabetes Classifier',
+    title: 'Brain',
     description:
-      'Predicts instances of diabetes in women based on parameters like past pregnancies .. etc,  with great accuracy.',
-    url: 'github.com/iBz-04/Diabetes-Classifier'
+      'Instead of using artificial neural networks trained on data, my goal is to build a nervous system  neuron by neuron, then a digital organ system everything hard coded, before trying to integrate intelligence.',
+    url: 'https://github.com/iBz-04/brAIn'
   },
 ]
 
