@@ -21,7 +21,7 @@ const developerTools = [
     title: 'Brain',
     description:
       'Instead of using artificial neural networks trained on data, my goal is to build a nervous system  neuron by neuron, then a digital organ system everything hard coded, before trying to integrate intelligence.',
-    url: 'https://github.com/iBz-04/brAIn'
+    url: 'github.com/iBz-04/brAIn'
   },
 ]
 
