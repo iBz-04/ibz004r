@@ -1,7 +1,8 @@
 import { visit } from "unist-util-visit";
+import type { Root } from 'mdast';
 
 function removeCodeTrail() {
-	return (tree) => {
+	return (tree: Root) => {
 		visit(tree, "element", (node) => {
 			if (node.tagName === "pre") {
 				for (const inner of node.children) {

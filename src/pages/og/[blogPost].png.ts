@@ -26,6 +26,10 @@ export const GET = (async ({ params }) => {
 	const post = (await getCollection("blog")).find(
 		(post) => post.slug === params.blogPost,
 	);
+	
+	if (!post) {
+		return new Response("Post not found", { status: 404 });
+	}
 
 	const svg = await satori(getOgImage({ post, resources }), {
 		width: 1280,

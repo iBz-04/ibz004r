@@ -14,7 +14,7 @@ const developerTools = [
   {
     title: 'Omnipad',
     description:
-      'Omnipad is a fast, localized, and privacy-focused word & markdown editing desktop web app, designed for simplicity and productivity',
+      'Omnipad is a fast, localized, light weight and privacy-focused word & markdown editing desktop web app, designed for simplicity and productivity',
     url: 'omnipad.live'
   },
   {

@@ -17,7 +17,7 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 const postsList = posts.slice(0, 6).map((post) => ({
   link: `/blog/${post.slug}`,
   meta: shortenDate(post.data.pubDate!),
-  title: post.data.title,
+  title: post.data.title || '',
 }))
 ---
 
@@ -36,7 +36,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           My interest lies in Intelligent Systems, Perception & Navigation. 
           Also, I have some background in Genetics/Molecular Biology.
           I spend most of my time researching, drawing, coding and traveling.
-          Currently I'm working on early stage skin disease detection with canada-based startup, Inventra.
+          Be sure to check out my articles on AI, systems and math if you're interested.
         </p>
 
         <blockquote class="text-secondary mt-4">
