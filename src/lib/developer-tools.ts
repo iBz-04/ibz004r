@@ -2,13 +2,13 @@ const developerTools = [
   {
     title: 'Omniverse',
     description:
-      'Create your custom AI assistants, get access to extensions like the online shopping and language learning plugins to make your assistants powerful than the average chatbot and many more',
+      'An educational AI app with ~10,000 users; featuring multimodal & knowledge-based interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
     url: 'omniverse.com.im',
   },
   {
     title: 'Omnibot',
     description:
-      'Omnibot is an AI platform that runs LLMs natively in your browser, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
+      'Omnibot is an edge ai platform that runs LLMs natively in your browser, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
     url: 'omnibot.com.co'
   },
   {

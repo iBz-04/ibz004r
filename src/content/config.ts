@@ -31,6 +31,4 @@ const courseMeta = defineCollection({
 export const collections = {
 	blog,
 	"course-meta": courseMeta,
-	lessons,
-	"lesson-notes": lessonNotes,
 };
