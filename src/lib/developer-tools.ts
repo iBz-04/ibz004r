@@ -12,16 +12,16 @@ const developerTools = [
     url: 'omnibot.com.co'
   },
   {
-    title: 'Omnipad',
+    title: 'Omniscient',
     description:
-      'Omnipad is a fast, localized, light weight and privacy-focused word & markdown editing desktop web app, designed for simplicity and productivity',
-    url: 'omnipad.live'
+      'Omniscient is a lightweight & simple internet search engine that provides you with the answers you need, along with source citations. omniscient is powered by open source ai models.',
+    url: 'omniscient-xi.vercel.app'
   },
   {
-    title: 'Brain',
+    title: 'Hudgent',
     description:
-      'Instead of using artificial neural networks trained on data, my goal is to build a nervous system  neuron by neuron, then a digital organ system everything hard coded, before trying to integrate intelligence.',
-    url: 'github.com/iBz-04/brAIn'
+      'A specialized AI agent system that combines web scraping, semantic search, and large language models to provide authentic answers aligned with religious principles. To avoid hallucinations the system strictly does not provide an answer when information is not available.',
+    url: 'github.com/iBz-04/Hudgent'
   },
 ]
 
