@@ -12,16 +12,16 @@ const developerTools = [
     url: 'omnibot.com.co'
   },
   {
-    title: 'Omniscient',
+    title: 'Seeker',
     description:
-      'Omniscient is a lightweight & simple internet search engine that provides you with the answers you need, along with source citations. omniscient is powered by open source ai models.',
-    url: 'omniscient-xi.vercel.app'
+      'An open source research AI agent as an alternative to OpenAI Deep Research, capable of iterative deep-dive investigations by incorporating search algorithms web scraping and LLMs',
+    url: 'github.com/iBz-04/Seeker'
   },
   {
-    title: 'Hudgent',
+    title: 'Omnipad',
     description:
-      'A specialized AI agent system that combines web scraping, semantic search, and large language models to provide authentic answers aligned with religious principles. To avoid hallucinations the system strictly does not provide an answer when information is not available.',
-    url: 'github.com/iBz-04/Hudgent'
+      'Omnipad is a fast, localized, and privacy-focused notes, markdown editing pc app, designed for simplicity and distraction-free productivity, available on the web and macOS',
+    url: 'omnipad.live'
   },
 ]
 
