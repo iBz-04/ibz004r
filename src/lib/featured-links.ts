@@ -4,7 +4,7 @@ const featuredLinks = [
 		title: "ANWC lab",
 		position: "Researcher",
 		description:
-			"Working on new generation unmanned aerial vehicles operated with 5G communication",
+			"Working on UAVs & 5G communication for earthquake operations",
 			type: "Tubitak project",
 			icon: "i-lucide-qr-code text-blue-500 text-lg",
 		
