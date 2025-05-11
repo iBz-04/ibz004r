@@ -1,7 +1,7 @@
 
 const featuredLinks = [
 	{
-		title: "ANWC lab",
+		title: "ANWC labs",
 		position: "Researcher",
 		description:
 			"Working on UAVs & 5G communication for earthquake operations",

@@ -6,6 +6,12 @@ const developerTools = [
     url: 'omniverse.com.im',
   },
   {
+    title: 'Devseeker',
+    description:
+    'DevSeeker is a CLI coding agent that leverages large language models (LLMs) to automate software development tasks. It provides tools to generate, improve, and debug code through simple prompts.',
+    url: 'github.com/iBz-04/DevSeeker'
+  },
+  {
     title: 'Omnibot',
     description:
       'Omnibot is an edge ai platform that runs LLMs natively in your browser, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
