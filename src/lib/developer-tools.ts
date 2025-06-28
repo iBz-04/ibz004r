@@ -2,13 +2,13 @@ const developerTools = [
   {
     title: 'Omniverse',
     description:
-      'An educational AI app with ~10,000 users; featuring multimodal & knowledge-based interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
+      'An educational AI app with ~170,000 users; featuring multimodal & knowledge-based interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
     url: 'omniverse.com.im',
   },
   {
     title: 'Devseeker',
     description:
-    'DevSeeker is a CLI coding agent that leverages large language models (LLMs) to automate software development tasks. It provides tools to generate, improve, and debug code through simple prompts.',
+    'DevSeeker is n autonomous coding agent that leverages LLMs to automate software development tasks. It provides tools to generate, improve, and debug code through simple prompts.',
     url: 'github.com/iBz-04/DevSeeker'
   },
   {
