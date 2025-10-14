@@ -1,15 +1,39 @@
 const developerTools = [
+   {
+    title: 'Pymanager',
+    description:
+    'The Official Python Install Manager (for Windows Operating System only)',
+    url: 'github.com/python/pymanager'
+  },
   {
     title: 'Omniverse',
     description:
-      'An educational AI app with ~170,000 users; featuring multimodal & knowledge-based interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
+      'An educational app with; featuring multimodal & knowledge-based ai interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
     url: 'omniverse.com.im',
+  },
+    {
+    title: 'Raya',
+    description:
+    'A computer use agent that works in the windows GUI layer, providing advanced automation capabilities without relying on image recognition techniques.',
+    url: 'pypi.org/project/raya-agent'
+  },
+    {
+    title: 'Smart Dermatology',
+    description:
+    'Snap a picture, let an advanced AI algorithm analyze your skin, get personalized product  and dermatologist recommendations for skin diseases',
+    url: 'smartbeauty.bluesense.ai'
   },
   {
     title: 'Devseeker',
     description:
-    'DevSeeker is n autonomous coding agent that leverages LLMs to automate software development tasks. It provides tools to generate, improve, and debug code through simple prompts.',
+    'An autonomous llm coding agent that automates programming tasks. It provides tools to generate, improve, and debug code through simple prompts.',
     url: 'github.com/iBz-04/DevSeeker'
+  },
+  {
+    title: 'Cevheri',
+    description:
+    'A modern drone ground control station that integrates with physics simulators, gps and pymavlink protocol for communication',
+    url: 'github.com/iBz-04/Cevheri'
   },
   {
     title: 'Omnibot',
