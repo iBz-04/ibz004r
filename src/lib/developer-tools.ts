@@ -2,13 +2,13 @@ const developerTools = [
    {
     title: 'Pymanager',
     description:
-    'The Official Python Install Manager (for Windows Operating System only)',
+    'The Official Python Install Manager application (for Windows Operating System only)',
     url: 'github.com/python/pymanager'
   },
   {
     title: 'Omniverse',
     description:
-      'An educational app with; featuring multimodal & knowledge-based ai interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
+      'An educational app featuring multimodal & knowledge-based interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
     url: 'omniverse.com.im',
   },
     {
@@ -38,7 +38,7 @@ const developerTools = [
   {
     title: 'Omnibot',
     description:
-      'Omnibot is an edge ai platform that runs LLMs natively in your browser, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
+      'An edge ai platform that runs LLMs natively in your browser, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
     url: 'omnibot.com.co'
   },
   {
