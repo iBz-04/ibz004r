@@ -5,6 +5,12 @@ const developerTools = [
     'The Official Python Install Manager application (for Windows Operating System only)',
     url: 'github.com/python/pymanager'
   },
+   {
+    title: 'Offeline',
+    description:
+      'An edge ai desktop and web app that runs LLMs natively on your hardware, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
+    url: 'offeline.site'
+  },
   {
     title: 'Omniverse',
     description:
@@ -35,12 +41,7 @@ const developerTools = [
     'A modern drone ground control station that integrates with physics simulators, gps and pymavlink protocol for communication',
     url: 'github.com/iBz-04/Cevheri'
   },
-  {
-    title: 'Omnibot',
-    description:
-      'An edge ai platform that runs LLMs natively in your browser, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
-    url: 'omnibot.com.co'
-  },
+ 
   {
     title: 'Seeker',
     description:
