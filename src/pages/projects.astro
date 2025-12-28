@@ -114,12 +114,40 @@ const packages = [
     </h2>
     <ul>
       {
-        packages.map((project) => (
+        packages.slice(0, 3).map((project) => (
           <li>
             <ProjectItem project={project} />
           </li>
         ))
       }
     </ul>
+
+    <ul id="hidden-projects" class="hidden">
+      {
+        packages.slice(3).map((project) => (
+          <li>
+            <ProjectItem project={project} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <button
+      id="show-more-btn"
+      class="text-secondary mt-4 flex cursor-pointer items-center gap-1 border-none bg-transparent text-sm hover:text-zinc-800"
+    >
+      <span>see more</span>
+      <div class="i-lucide-chevron-down inline-block"></div>
+    </button>
+
+    <script>
+      const btn = document.getElementById('show-more-btn')
+      const hiddenProjects = document.getElementById('hidden-projects')
+
+      btn?.addEventListener('click', () => {
+        hiddenProjects?.classList.remove('hidden')
+        btn.style.display = 'none'
+      })
+    </script>
   </main>
 </Shell>
