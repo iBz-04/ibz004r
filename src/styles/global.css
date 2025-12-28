@@ -8,13 +8,20 @@
 }
 
 .text-secondary {
-	@apply text-zinc-500 dark:text-neutral-400;
+	@apply text-zinc-500;
 }
 
 :root {
-	@apply text-zinc-800 dark:text-stone-50 bg-zinc-100 dark:bg-neutral-900;
+	--parchment: hsla(40, 23%, 95%, 1);
+	--alabaster-grey: hsla(30, 12%, 90%, 1);
+	--parchment-2: hsla(36, 22%, 95%, 1);
+	--silver: hsla(36, 5%, 78%, 1);
+	--parchment-3: hsla(36, 19%, 95%, 1);
 
-	color-scheme: light dark;
+	@apply text-zinc-800;
+	background-color: var(--parchment);
+
+	color-scheme: light;
 	font-family: "Inter", sans-serif;
 	font-size: 14px;
 
@@ -41,30 +48,12 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--svg-outline: #525252;
-		--svg-foreground: #d4d4d4;
-		--svg-surface: #262626;
-
-		--draw-fg: #eee;
-		--draw-red: #f11d0e;
-		--draw-orange: #f14e0e;
-		--draw-yellow: #ffe44a;
-		--draw-green: #15e272;
-		--draw-blue: #58a6ff;
-		--draw-indigo: #7c58ff;
-		--draw-violet: #ae58ff;
-		--draw-pink: #ee00ab;
-	}
-}
-
 a {
 	@apply underline break-words;
 }
 
 kbd {
-	@apply border rounded-md px-1 text-sm border-b-2 dark:border-zinc-600;
+	@apply border rounded-md px-1 text-sm border-b-2;
 }
 
 kbd+kbd {
@@ -76,7 +65,11 @@ kbd+kbd {
 }
 
 .hover-link a {
-	@apply hover:bg-zinc-200 dark:hover:bg-neutral-800 transition-[background] duration-200;
+	@apply transition-[background] duration-200;
+}
+
+.hover-link a:hover {
+	background-color: var(--alabaster-grey);
 }
 
 p+*,
@@ -98,11 +91,11 @@ video {
 }
 
 hr {
-	@apply border-t border-t-zinc-300 dark:border-t-neutral-600 mt-4;
+	@apply border-t border-t-zinc-300 mt-4;
 }
 
 .footnotes {
-	@apply border-t border-t-zinc-300 dark:border-t-neutral-600 pt-8;
+	@apply border-t border-t-zinc-300 pt-8;
 	margin-top: 4rem;
 }
 
@@ -115,14 +108,14 @@ hr {
 }
 
 .footnotes li {
-	@apply list-decimal ms-8 marker:text-zinc-500 dark:marker:text-neutral-400;
+	@apply list-decimal ms-8 marker:text-zinc-500;
 }
 
 code {
 	font-family: 'DM Mono', monospace;
 	font-size: 0.95rem !important;
 	font-variant-ligatures: common-ligatures;
-	@apply text-blue-600 dark:text-orange-400 text-sm;
+	@apply text-blue-600 text-sm;
 }
 
 article h1,
@@ -170,7 +163,8 @@ article li+li {
 }
 
 article blockquote {
-	@apply max-w-[30rem] p-2 bg-zinc-200 dark:bg-neutral-800 bg-opacity-50 text-xl mx-auto border-s-3 border-blue-500 dark:border-amber-500 my-4 rounded-e-lg;
+	background-color: var(--parchment-2);
+	@apply max-w-[30rem] p-2 bg-opacity-50 text-xl mx-auto border-s-3 border-blue-500 my-4 rounded-e-lg;
 }
 
 article table {
@@ -202,12 +196,6 @@ article ol {
 		column-rule-color: var(--bs-gray-400);
 		column-gap: 3rem;
 	}
-
-	@media (prefers-color-scheme: dark) {
-		article>section:not(.footnotes) {
-			column-rule-color: var(--bs-gray-700);
-		}
-	}
 }
 
 
@@ -216,6 +204,7 @@ article ol {
 	counter-increment: step 0;
 	padding: 1rem;
 	border-radius: 0.5rem;
+	background-color: var(--parchment-3) !important;
 }
 
 .astro-code .line {
@@ -244,20 +233,6 @@ article ol {
 	@apply bg-green-50;
 }
 
-@media (prefers-color-scheme: dark) {
-	.astro-code .diff.remove {
-		background-color: rgba(160, 46, 46, 0.15) !important;
-	}
-
-	.astro-code .diff:is(.remove, .add)>* {
-		background-color: transparent !important;
-	}
-
-	.astro-code .diff.add {
-		background-color: rgba(46, 160, 67, 0.15) !important;
-	}
-}
-
 .astro-code .diff.remove> :first-child::before {
 	content: "—";
 	@apply text-red-500 -ms-2;
@@ -269,34 +244,13 @@ article ol {
 	@apply text-green-500 -ms-2;
 }
 
-@media (prefers-color-scheme: dark) {
-	.astro-code,
-	.astro-code span {
-		color: var(--shiki-dark) !important;
-		background-color: var(--shiki-dark-bg) !important;
-		/* Optional, if you also want font styles */
-		font-style: var(--shiki-dark-font-style) !important;
-		font-weight: var(--shiki-dark-font-weight) !important;
-		text-decoration: var(--shiki-dark-text-decoration) !important;
-	}
-}
-
 .scheme-img> :nth-child(2) {
 	display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-	.scheme-img> :first-child {
-		display: none;
-	}
-
-	.scheme-img> :nth-child(2) {
-		display: block;
-	}
-}
-
 .card {
-	@apply bg-zinc-50 dark:bg-neutral-800 border border-zinc-200 dark:border-neutral-700 rounded-lg p-4;
+	background-color: var(--parchment-2);
+	@apply border border-zinc-200 rounded-lg p-4;
 }
 
 .feature-svg {
@@ -305,17 +259,15 @@ article ol {
 }
 
 .MafsView {
-	@apply rounded-lg mt-2 border-2 border-zinc-200 dark:border-neutral-700;
+	@apply rounded-lg mt-2 border-2 border-zinc-200;
 }
 
-@media (prefers-color-scheme: light) {
-	.MafsView {
-		--mafs-bg: #efefef;
-		--mafs-fg: #222;
+.MafsView {
+	--mafs-bg: var(--parchment-3);
+	--mafs-fg: #222;
 
-		--mafs-line-color: #aaa;
-		--grid-line-subdivision-color: #999;
-	}
+	--mafs-line-color: #aaa;
+	--grid-line-subdivision-color: #999;
 }
 
 @keyframes fadeIn {

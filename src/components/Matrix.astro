@@ -6,8 +6,7 @@ const inDev = process.env.NODE_ENV !== 'production'
   id="pc-canvas"
   style="background-color: transparent;"
   height="260"
-  class="border"
-  width="300">
+  class="border" width="300">
 </canvas>
 
 <script>
@@ -47,7 +46,7 @@ const inDev = process.env.NODE_ENV !== 'production'
   renderer.shadowMap.enabled = true
   renderer.setPixelRatio(window.devicePixelRatio)
 
-  renderer.setClearColor(0xf4f4f5)
+  renderer.setClearColor(0xF5F3EF)
 
   camera.position.set(0, 0, 5.3)
   const caseMaterial = new MeshStandardMaterial({
@@ -98,34 +97,6 @@ const inDev = process.env.NODE_ENV !== 'production'
   window.addEventListener('resize', () => [
     renderer.setPixelRatio(window.devicePixelRatio),
   ])
-
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-  if (mediaQuery.matches) {
-    dark()
-  }
-
-  const listener = (e: MediaQueryListEvent) => {
-    if (e.matches) {
-      dark()
-    } else {
-      light()
-    }
-  }
-
-  mediaQuery.addEventListener('change', listener)
-
-  function dark() {
-    renderer.setClearColor(0x171717)
-    dl.intensity = 0.1
-    al.intensity = 0.1
-  }
-
-  function light() {
-    renderer.setClearColor(0xf4f4f5)
-    dl.intensity = 1
-    al.intensity = 1
-  }
 
   new OrbitControls(camera, canvas)
   function animate() {

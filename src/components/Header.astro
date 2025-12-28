@@ -2,46 +2,36 @@
 import NavLink from './NavLink.astro'
 ---
 
-<header class="container mx-auto">
-  <header class="mb-[2rem] flex items-center justify-between py-3">
+<header class="container mx-auto"> <header class="mb-[2rem] flex items-center justify-between py-3">
     <img
       src="/ic01.svg"
       alt="logo"
-      class="h-[24px]"
-      height="24"
-      width="30.42"
+      class="h-[24px]" height="24" width="30.42"
     />
 
     <div
-      class="flex items-center gap-1 rounded-full border border-zinc-300 bg-zinc-200 bg-opacity-40 px-1 text-zinc-600 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+      class="flex items-center gap-1 rounded-full border border-zinc-300 bg-zinc-200 bg-opacity-40 px-1 text-zinc-600">
       <NavLink
-        class="!p-1"
-        href="mailto:ibz.04dev@gmail.com"
-        target="_blank"
+        class="!p-1" href="mailto:ibz.04dev@gmail.com" target="_blank"
         aria-label="My mail">
         <span class="i-lucide-mail" title="My mail" role="img"></span>
       </NavLink>
 
       <NavLink
-        class="!p-1"
-        href="https://twitter.com/ibrahh__ib"
-        target="_blank"
+        class="!p-1" href="https://twitter.com/ibrahh__ib" target="_blank"
         aria-label="Twitter">
         <span class="i-lucide-twitter" title="Twitter" role="img"></span>
       </NavLink>
 
       <NavLink
-        class="!p-1"
-        href="https://github.com/iBz-04"
-        target="_blank"
+        class="!p-1" href="https://github.com/iBz-04" target="_blank"
         aria-label="Github">
         <span class="i-lucide-github" title="Github" role="img"></span>
       </NavLink>
     </div>
   </header>
 
-  <nav class="hover-link flex items-center gap-2 overflow-y-auto">
-    <NavLink href="/">
+  <nav class="hover-link flex items-center gap-2 overflow-y-auto"> <NavLink href="/">
       <div
         class="i-lucide-home hidden opacity-50 group-[.is-active]:inline-block">
       </div> Home
@@ -65,8 +55,7 @@ import NavLink from './NavLink.astro'
         class="i-lucide-graduation-cap hidden opacity-50 group-[.is-active]:inline-block">
       </div>
 
-      Courses <div class="absolute -top-2 right-0">
-        <small class="inline-block size-2 rounded-md bg-amber-500 text-white">
+      Courses <div class="absolute -top-2 right-0"> <small class="inline-block size-2 rounded-md bg-amber-500 text-white">
         </small>
       </div>
     </NavLink> -->

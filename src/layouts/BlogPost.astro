@@ -46,18 +46,16 @@ const headings = headingsRaw.filter(
             {title}
           </h1>
         </div>
-        <div class="mb-[4rem] text-zinc-500 dark:text-neutral-400">
-          <ul class="ms-0 flex list-none gap-2">
+        <div class="mb-[4rem] text-zinc-500"> <ul class="ms-0 flex list-none gap-2">
             <li>
               <div
-                class="inline rounded-lg bg-zinc-200 px-2 font-mono text-sm dark:bg-neutral-800">
+                class="inline rounded-lg bg-zinc-200 px-2 font-mono text-sm">
                 <FormattedDate date={pubDate} />
               </div>
             </li>
             {
               tags?.map((tag) => (
-                <li class="mt-0">
-                  <code class="rounded-md bg-blue-100 px-2 dark:bg-neutral-800">
+                <li class="mt-0"> <code class="rounded-md bg-blue-100 px-2">
                     {tag}
                   </code>
                 </li>
@@ -65,18 +63,14 @@ const headings = headingsRaw.filter(
             }
           </ul>
         </div>
-        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
-          <div class="col-span-1 lg:col-span-3">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-4"> <div class="col-span-1 lg:col-span-3">
             <slot />
           </div>
 
-          <aside class="col-span-1 hidden lg:block">
-            <div class="sticky top-8">
+          <aside class="col-span-1 hidden lg:block"> <div class="sticky top-8">
               {
                 headings.length > 1 && (
-                  <div class="rounded-lg bg-zinc-200 bg-opacity-40 p-2 dark:bg-neutral-800">
-                    <header class="mb-2 flex items-center gap-2 rounded-lg bg-zinc-200 p-1 font-bold dark:bg-neutral-700">
-                      <span class="i-lucide-split-square-vertical text-secondary" />
+                  <div class="rounded-lg bg-zinc-200 bg-opacity-40 p-2"> <header class="mb-2 flex items-center gap-2 rounded-lg bg-zinc-200 p-1 font-bold"> <span class="i-lucide-split-square-vertical text-secondary" />
                       Jump to
                     </header>
 

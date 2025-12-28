@@ -70,22 +70,18 @@ const packages = [
 ---
 
 <Shell title="Projects" description="Stuff I have worked on.">
-  <main class="container mx-auto mt-[5rem]">
-    <h1 class="mb-[2rem] text-2xl font-bold">Projects</h1>
-
-    <p class="page-half">
+  <main class="container mx-auto mt-[5rem]"> <h1 class="mb-[2rem] text-2xl font-bold">Projects</h1> <p class="page-half">
       These are a curation of some projects from internships, jobs and personal endeavours.
     </p>
 
     <h2
-      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
-      <div role="img" class="i-lucide-hand-metal"></div> Erkam Medya
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase"> <div role="img" class="i-lucide-hand-metal"></div> Erkam Medya
     </h2>
 
     <ul>
       {
         startups.map((project) => (
-          <li class="">
+          <li >
             <ProjectItem project={project} />
           </li>
         ))
@@ -93,16 +89,14 @@ const packages = [
     </ul>
 
     <h2
-      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase">
-      <div role="img" class="i-lucide-podcast"></div> Darkwin
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm font-medium uppercase"> <div role="img" class="i-lucide-podcast"></div> Darkwin
     </h2>
 
-    <div class="col-span-1 grid lg:grid-cols-4 gap-4">
-      <div class="col-span-3">
+    <div class="col-span-1 grid lg:grid-cols-4 gap-4"> <div class="col-span-3">
         <ul>
           {
             apps.map((app) => (
-              <li class="">
+              <li >
                 <ProjectItem project={app} />
               </li>
             ))
@@ -116,8 +110,7 @@ const packages = [
     </div>
 
     <h2
-      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm uppercase">
-      <div role="img" class="i-lucide-package"></div> Personal
+      class="text-secondary mb-4 mt-[5rem] flex items-center gap-2 font-mono text-sm uppercase"> <div role="img" class="i-lucide-package"></div> Personal
     </h2>
     <ul>
       {

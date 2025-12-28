@@ -440,14 +440,13 @@ function Draw({ aspectRatio, className, id }: Props) {
 	return (
 		<div>
 			<header className={clsx("flex justify-between", { "!hidden": readOnly })}>
-				<div className="flex gap-4">
-					<ul className="ms-0 mb-1 flex">
+				<div className="flex gap-4"> <ul className="ms-0 mb-1 flex">
 						{styles.map((style) => (
 							<button
 								className={clsx(
-									"flex flex-col gap-1 border border-zinc-300 px-2 py-1 dark:border-neutral-700 text-zinc-700 dark:text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
+									"flex flex-col gap-1 border border-zinc-300 px-2 py-1 text-zinc-700 first:rounded-s-lg last:rounded-e-lg",
 									{
-										"bg-zinc-300 dark:bg-neutral-700":
+										"bg-zinc-300":
 											style.type === currentStyle,
 									},
 								)}
@@ -477,7 +476,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 								<button
 									type="button"
 									style={{ backgroundColor: `var(--draw-${color})` }}
-									className=" size-4 rounded-md"
+									className="size-4 rounded-md"
 									onClick={() => changeColor(color)}
 								/>
 							</li>
@@ -485,12 +484,11 @@ function Draw({ aspectRatio, className, id }: Props) {
 					</ul>
 				</div>
 
-				<div className="flex flex-col">
-					<ul className="ms-0 mb-1 flex">
+				<div className="flex flex-col"> <ul className="ms-0 mb-1 flex">
 						{actions.map((action) => (
 							<button
 								className={clsx(
-									"flex flex-col hover:bg-zinc-200 dark:hover:bg-neutral-800 gap-1 border px-2 py-2 dark:border-neutral-700 first:rounded-s-lg last:rounded-e-lg",
+									"flex flex-col hover:bg-zinc-200 gap-1 border px-2 py-2 first:rounded-s-lg last:rounded-e-lg",
 								)}
 								type="button"
 								key={action.type}
@@ -504,7 +502,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					<div className="relative">
 						<ul
 							className={clsx(
-								"w-[10rem] max-h-[20rem] border dark:border-neutral-700 rounded-lg overflow-y-auto absolute list-none ms-0 right-1 top-1 bg-zinc-100 dark:bg-neutral-900 transition-all",
+								"w-[10rem] max-h-[20rem] border rounded-lg overflow-y-auto absolute list-none ms-0 right-1 top-1 bg-[var(--parchment-3)] transition-all",
 								{ "h-0 opacity-0": !showOutline },
 							)}
 							onMouseLeave={() => setHovered(-1)}
@@ -512,7 +510,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 							{[...layers].reverse().map((it, index) => (
 								<li
 									key={`${it.type}-${index}`}
-									className="px-2 py-0.5 mt-0 hover:bg-zinc-200 dark:hover:bg-neutral-800 font-mono text-sm flex justify-between border-b last:border-b-0 dark:border-neutral-800"
+									className="px-2 py-0.5 mt-0 hover:bg-zinc-200 font-mono text-sm flex justify-between border-b last:border-b-0"
 									onMouseEnter={() => setHovered(index)}
 								>
 									<span>{it.type}</span>
@@ -535,7 +533,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 				style={{ aspectRatio }}
 				aria-label={id}
 				className={clsx(
-					"bg-zinc-200 bg-opacity-30 dark:bg-neutral-800 dark:bg-opacity-100 w-full",
+					"bg-zinc-200 bg-opacity-30 w-full",
 					className,
 				)}
 			/>
@@ -548,9 +546,9 @@ function Draw({ aspectRatio, className, id }: Props) {
 						<button
 							title={shape.type}
 							className={clsx(
-								"flex flex-col gap-1 border border-zinc-300 px-2 py-1 dark:border-neutral-700 text-zinc-800 dark:text-neutral-300 first:rounded-s-lg last:rounded-e-lg",
+								"flex flex-col gap-1 border border-zinc-300 px-2 py-1 text-zinc-800 first:rounded-s-lg last:rounded-e-lg",
 								{
-									"bg-zinc-300 dark:bg-neutral-700":
+									"bg-zinc-300":
 										shape.type === currentShape,
 								},
 							)}
@@ -567,7 +565,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 					))}
 				</ul>
 
-				<div className="font-mono px-1 text-secondary text-xs bg-zinc-200 dark:bg-neutral-800 rounded-md self-start">
+				<div className="font-mono px-1 text-secondary text-xs bg-zinc-200 rounded-md self-start">
 					{id}
 				</div>
 			</div>
@@ -575,7 +573,7 @@ function Draw({ aspectRatio, className, id }: Props) {
 			<div className="relative">
 				<textarea
 					className={clsx(
-						"rounded-lg border py-0.5 p-1 dark:border-neutral-700 absolute top-1 left-0 text-sm font-mono h-[6rem] transition-all",
+						"rounded-lg border py-0.5 p-1 absolute top-1 left-0 text-sm font-mono h-[6rem] transition-all",
 						{ "h-0 opacity-0": currentShape !== "text" },
 					)}
 					value={text}

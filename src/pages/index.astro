@@ -25,14 +25,9 @@ const postsList = posts.slice(0, 6).map((post) => ({
   <main class="container mx-auto mt-[5rem]">
     <div
       title="welcome"
-      class="inline-block rounded-xl border border-pink-200 bg-pink-100 bg-opacity-50 px-2 font-medium tracking-wider text-pink-500 no-underline dark:border-amber-800 dark:bg-amber-300 dark:bg-opacity-10 dark:text-amber-500">
-      <div class="i-lucide-zap inline-block !text-sm"></div> I'm Ibrahim
+      class="inline-block rounded-xl border border-brown-200 bg-brown-100 bg-opacity-50 px-2 font-medium tracking-wider text-brown-700 no-underline"> <div class="i-lucide-zap inline-block !text-sm"></div> I'm Ibrahim
     </div>
-    <p class="mt-1 text-secondary ">An engineer</p>
-
-    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
-      <div class="col-span-1">
-        <p class="mt-6">
+    <p class="mt-1 text-secondary">An engineer</p> <div class="grid grid-cols-1 gap-2 lg:grid-cols-2"> <div class="col-span-1"> <p class="mt-6">
           My interest lies in Intelligent and Autonomous Systems especially those that fly. 
           I spend most of my time on research, drawing and traveling, but i also like to participate in competitive programming and
            sometimes build open source software.
@@ -53,8 +48,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
         <!-- <p>
           I study engineering at
           <a
-            class="rounded-lg bg-emerald-50 p-1 font-medium text-green-600 no-underline dark:bg-emerald-800 dark:bg-opacity-20"
-            href="https://www.yildiz.edu.tr/">
+            class="rounded-lg bg-emerald-50 p-1 font-medium text-green-600 no-underline" href="https://www.yildiz.edu.tr/">
             Yildiz Technical University
           </a>
           
@@ -73,33 +67,24 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
     <!-- Experience -->
 
-    <h2
-      class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8"
-      id="featured">
-      <div class="i-lucide-users-round inline-block opacity-60"></div> Currently
+    <!-- <h2
+      class="mb-4 flex items-center gap-2 font-bold max-sm:mt-8" id="featured"> <div class="i-lucide-users-round inline-block opacity-60"></div> Currently
     </h2>
 
     <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
       {
         featuredLinks.map((link) => (
-          <div class="col-span-1">
-            <div class="card !max-md:px-2 !max-md:pt-2 !pb-0">
-              <h3 class="flex items-center gap-2 font-bold">
+          <div class="col-span-1"> <div class="card !max-md:px-2 !max-md:pt-2 !pb-0"> <h3 class="flex items-center gap-2 font-bold">
                 {link.icon && <div class:list={['inline-block', link.icon]} />}
                 {link.title}
               </h3>
-              <span class="text-sm font-normal text-gray-500">{link.position}</span>
-              <p class="text-secondary mt-0 text-sm">{link.description}</p>
-              <div class="pb-2 text-sm">
-                <p class="text-sm font-normal text-gray-500">
-                  <span class="whitespace-pre-wrap">{link.type}</span>
+              <span class="text-sm font-normal text-gray-500">{link.position}</span> <p class="text-secondary mt-0 text-sm">{link.description}</p> <div class="pb-2 text-sm"> <p class="text-sm font-normal text-gray-500"> <span class="whitespace-pre-wrap">{link.type}</span>
                 </p> 
-              </div>
+              </div> -->
 
               {/* {link.featureImage && (
                 <div
-                  class="aspect-[16/7] rounded-t-lg bg-zinc-100 dark:bg-neutral-900 dark:bg-opacity-40"
-                  role="img"
+                  class="aspect-[16/7] rounded-t-lg bg-[var(--parchment-3)]" role="img"
                   aria-label={link.title}>
                   <link.featureImage />
                 </div>
@@ -111,37 +96,27 @@ const postsList = posts.slice(0, 6).map((post) => ({
               </p>
             )} */}
           </div>
-        ))
-      }
+        <!-- ))
+      } -->
     </div>
 
-    <div class="mt-8 flex">
+    <!-- <div class="mt-8 flex">
       <a
         href="https://omnisoft.com.co"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center gap-4 rounded-lg border border-green-500 bg-green-400 px-2 py-1 font-bold text-black no-underline">
-        <div class="text-sm">Check Out: Omnisoft</div>
-        <div class="flex gap-2 opacity-80">
-          <div class="i-lucide-zap"></div>
-          <div class="i-lucide-library-square"></div>
-          <div class="i-lucide-users-round"></div>
-          <div class="i-lucide-qr-code"></div>
+        class="flex items-center gap-4 rounded-lg border border-green-500 bg-green-400 px-2 py-1 font-bold text-black no-underline"> <div class="text-sm">Check Out: Omnisoft</div> <div class="flex gap-2 opacity-80"> <div class="i-lucide-zap"></div> <div class="i-lucide-library-square"></div> <div class="i-lucide-users-round"></div> <div class="i-lucide-qr-code"></div>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
-      <div class="col-span-1 lg:col-span-2">
-        <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts">
-          <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent
+    <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3"> <div class="col-span-1 lg:col-span-2"> <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts"> <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent
           Articles
         </h2>
 
         <ContentList noTransition items={postsList.slice(0, 2)} />
 
-        <div class="text-secondary mt-5">
-          view<a class="text-zinc-800 dark:text-neutral-200" href="/blog">
+        <div class="text-secondary mt-5"> view<a class="text-zinc-800" href="/blog">
            more
           </a>
         </div>
@@ -149,11 +124,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
     </section>
 
 
-    <section class="mt-[4rem]">
-      <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
-        <div class="col-span-1 lg:col-span-2">
-          <h2 class="mb-4 flex items-center gap-2 font-bold">
-            <div class="i-lucide-terminal-square inline-block opacity-60"></div>
+    <section class="mt-[4rem]"> <div class="grid grid-cols-1 gap-4 lg:grid-cols-4"> <div class="col-span-1 lg:col-span-2"> <h2 class="mb-4 flex items-center gap-2 font-bold"> <div class="i-lucide-terminal-square inline-block opacity-60"></div>
             Projects
           </h2>
 
@@ -169,8 +140,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
 
           <!-- <div class="text-secondary mt-5">
             view<a
-              class="text-zinc-800 dark:text-neutral-200"
-              href="/projects">
+              class="text-zinc-800" href="/projects">
               more
             </a>
           </div> -->
