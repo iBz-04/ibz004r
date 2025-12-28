@@ -2,20 +2,27 @@ const developerTools = [
    {
     title: 'Pymanager',
     description:
-    'The Official Python Install Manager application (for Windows Operating System only)',
+    'The Official Python Install Manager application (for Windows Operating System only) used by millions',
     url: 'github.com/python/pymanager'
   },
-   {
+    {
+    title: 'Doculore',
+    description:
+      'A document intelligence desktop platform for junior legal and consulting teams to work faster',
+    url: 'doculore.com',
+  },
+
+    {
+    title: '5G UAV',
+    description:
+      ' Research on architecture of Emergency Communication Systems in Disasters through UAVs in 5G',
+    url: 'mdpi.com/2504-446X/7/1/25'
+  },
+    {
     title: 'Offeline',
     description:
-      'An edge ai desktop and web app that runs LLMs natively on your hardware, ensuring your data is processed securely on your device. With offline functionality, chat history maintenance, file-based interactions, voice support, and custom memory.',
+      'An edge ai desktop runtime to run LLMs natively on devices. With offline functionality and custom memory management.',
     url: 'offeline.site'
-  },
-  {
-    title: 'Omniverse',
-    description:
-      'An educational app featuring multimodal & knowledge-based interactions, artifacts coding window, customizable ui, speech and visual synthesis and a user streak system',
-    url: 'omniverse.com.im',
   },
     {
     title: 'Raya',
@@ -47,13 +54,8 @@ const developerTools = [
     description:
       'An open source research AI agent as an alternative to OpenAI Deep Research, capable of iterative deep-dive investigations by incorporating search algorithms web scraping and LLMs',
     url: 'github.com/iBz-04/Seeker'
-  },
-  {
-    title: 'Omnipad',
-    description:
-      'Omnipad is a fast, localized, and privacy-focused notes, markdown editing pc app, designed for simplicity and distraction-free productivity, available on the web and macOS',
-    url: 'omnipad.live'
-  },
+  }
+
 ]
 
 export default developerTools
