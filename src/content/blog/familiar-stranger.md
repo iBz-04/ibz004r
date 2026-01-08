@@ -1,3 +1,4 @@
+---
 title: 'Familiar Stranger'
 description: 'Journeys, departure, and the feeling of not belonging'
 pubDate: 'Jan 01 2026'
