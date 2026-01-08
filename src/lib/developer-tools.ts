@@ -6,10 +6,10 @@ const developerTools = [
     url: 'github.com/python/pymanager'
   },
     {
-    title: 'Doculore',
+    title: 'Logoslate',
     description:
-      'A document intelligence desktop platform for junior legal and consulting teams to work faster',
-    url: 'doculore.com',
+      'A graphics design desktop application for creating quality business logos in seconds',
+    url: 'logoslate.com',
   },
 
     {
@@ -17,6 +17,12 @@ const developerTools = [
     description:
       ' Research on architecture of Emergency Communication Systems in Disasters through UAVs in 5G',
     url: 'mdpi.com/2504-446X/7/1/25'
+  },
+  {
+    title: 'Doculore',
+    description:
+      'A document intelligence desktop platform for junior legal and consulting teams to work faster',
+    url: 'doculore.com',
   },
     {
     title: 'Offeline',
