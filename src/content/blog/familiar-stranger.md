@@ -45,7 +45,7 @@ I became a stranger to myself. I had no fixed home.
 
 ## Conclusion
 
-Now I avoid looking back. When you leave something behind, it often disappears. I find comfort where there are no people — where no one can mistake familiarity for permanence.
+Now I avoid looking back. When you leave something behind, it often disappears. I find comfort where there are no people; where no one can mistake familiarity for permanence.
 
 I sit and breathe the present: no movement, only stillness. I try to hold off the approaching change, pleading silently for more time. The cycle follows me everywhere.
 
