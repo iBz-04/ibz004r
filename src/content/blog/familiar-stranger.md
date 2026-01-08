@@ -11,7 +11,7 @@ tags:
 
 
 
-From the suburbs of Accra, I met my first close friends. We had the best years: we invented games, flew kites, and argued about how sweet the biscuits tasted. We knew each other better than anyone. Then the worst happened — I had to leave for another city.
+From the suburbs of Accra, I met my first close friends. We had the best years: we invented games, flew kites, and argued about how sweet the biscuits tasted. We knew each other better than anyone. Then the worst happened - I had to leave for another city.
 
 They asked when I would come back. I smiled and said, "Soon." I never came back.
 
@@ -21,7 +21,7 @@ Moving to a new city felt unfamiliar at first: new faces, awkward introductions,
 
 Then the cycle began again: more moves, new schools, the same pattern of strangeness, acceptance, and familiarity.
 
-By middle school I learned to accept the cycle. At graduation I watched my classmates and smiled quietly — I knew we would scatter to different high schools, even if some hoped otherwise. They celebrated the end of school; I felt sorrow at another separation. The cycle had become my companion.
+By middle school I learned to accept the cycle. At graduation I watched my classmates and smiled quietly - I knew we would scatter to different high schools, even if some hoped otherwise. They celebrated the end of school; I felt sorrow at another separation. The cycle had become my companion.
 
 ## The Familiar Stranger
 
@@ -31,11 +31,11 @@ Then someone burst in through the window and introduced himself. He had no idea 
 
 We had the best days. For a while I forgot my fear. We lived as if each day were new, even through the difficulties of school. But the cycle returned. On a cold graduation night I left again.
 
-This time I left everything behind — family, friends, the life I knew. I promised myself I would return soon.
+This time I left everything behind - family, friends, the life I knew. I promised myself I would return soon.
 
 ## Breaking the Cycle
 
-When I did go back, things had changed. Some people were there but not the same. Jokes I didn't understand, stories I had missed, a house with altered furniture — even the rules of the country felt altered. I became a stranger in my own world: familiar, but not recognized.
+When I did go back, things had changed. Some people were there but not the same. Jokes I didn't understand, stories I had missed, a house with altered furniture - even the rules of the country felt altered. I became a stranger in my own world: familiar, but not recognized.
 
 I returned hoping to find what I had left, but it had shifted. This time I was the one left behind.
 
