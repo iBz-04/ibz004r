@@ -9,45 +9,86 @@ tags:
 
 ## Introduction
 
+From the suburbs of Accra, I met my first best buddies, we had the best years, created our own games and played them, flew kites and talked about how sweet the biscuits we just ate were, we knew each other better than anyone, then the worst happened, I had to leave, I had to move to another city.
 
+The first goodbye.
 
-From the suburbs of Accra, I met my first close friends. We had the best years: we invented games, flew kites, and argued about how sweet the biscuits tasted. We knew each other better than anyone. Then the worst happened - I had to leave for another city.
-
-They asked when I would come back. I smiled and said, "Soon." I never came back.
+They asked when I would come back, I smiled and said soon.
+I never came back.
 
 ## The Cycle Begins
 
-Moving to a new city felt unfamiliar at first: new faces, awkward introductions, and the strange feeling of leaving a perfect life behind. Time passed, and the city became routine. I made new friends and a new home. Familiarity slipped through my fingers until the new place felt like home.
+Moving to a different city felt new and unfamiliar, I had to get used to it, new faces and the introductions, people taking time before remembering your name and the feeling of having left a perfect life behind, time elapsed and I got used to it, it did not feel new anymore, I made new friends and a new routine, I had to accept leaving my past behind and moving on.
 
-Then the cycle began again: more moves, new schools, the same pattern of strangeness, acceptance, and familiarity.
+Familiarity slipped through my mind and the new city became home.
+Then again, my enemy struck, moving.
 
-By middle school I learned to accept the cycle. At graduation I watched my classmates and smiled quietly - I knew we would scatter to different high schools, even if some hoped otherwise. They celebrated the end of school; I felt sorrow at another separation. The cycle had become my companion.
+It was time for middle school and the cycle started again, strangeness, acceptance, familiarity, home.
+
+By then I was used to the cycle, although unexpected, I learned to accept it, at the graduation of middle school I looked over to my mates and smiled because I knew we would end up in different high schools, although my friends hoped we would attend the same one, but I knew sometimes hope is a cruel thing.
+
+They rejoiced at finishing school and having the workload off their backs, but I sat in sorrow of the separation from family and friends, it was not a new feeling, the cycle had become my friend.
 
 ## The Familiar Stranger
 
-High school was different. I was older and farther from family. I kept to myself on the first night of introductions, afraid to give anyone hope that I would stay. I did not want new attachments for their sake.
+Fast forward, my arrival at high school was different, I was grown now, there was more work to do, but more importantly I was truly away from my family, going home was not easy but it was still possible by bus.
 
-Then someone burst in through the window and introduced himself. He had no idea what he had started.
+I accepted my fate and embraced the new life, routine, new faces, new feelings.
 
-We had the best days. For a while I forgot my fear. We lived as if each day were new, even through the difficulties of school. But the cycle returned. On a cold graduation night I left again.
+During the first night when people were introducing themselves I sat in a corner, I should not speak, I should not give anyone hope of me being around for long, I did not want new friends, for their own good.
 
-This time I left everything behind - family, friends, the life I knew. I promised myself I would return soon.
+I was the familiar stranger, I appear with familiarity and leave like a stranger after a short time.
+
+I pictured the day of graduation and separation right on the first day.
+
+Then I saw a guy jump through the window and introduce himself, he did not know what he had just caused.
+
+We had the best days, it made me forget my fear, we lived every day like a brand new life through the difficulties of high school.
+
+Then the enemy caught up with us and it was a cold night when we graduated and I had to leave again.
+I expected it, but it was greater than I thought.
+
+This time I had to leave my entire world behind, my family, friends, home, life, feelings, lifestyle, it was a greater battle than I expected.
+
+They asked me when I was coming back, I smiled and said soon.
+
+I moved with a heavy heart and promised myself to return soon.
+
+I met my friend again, the cycle.
 
 ## Breaking the Cycle
 
-When I did go back, things had changed. Some people were there but not the same. Jokes I didn't understand, stories I had missed, a house with altered furniture - even the rules of the country felt altered. I became a stranger in my own world: familiar, but not recognized.
+Then I decided to break the cycle by going back, the voice in my head said you can go back but no one will be there, I disagreed and went back anyway.
 
-I returned hoping to find what I had left, but it had shifted. This time I was the one left behind.
+It was true, not entirely, but true.
 
-I became a stranger to myself. I had no fixed home.
+They were there, but they were not.
+
+New things had happened, my friends made jokes I did not understand, my family talked about events I did not know, the decoration of the house had changed, the laws of the country had changed.
+
+I was a stranger in my own world, the familiar stranger.
+
+I returned hoping to see things the way I left them, but it was not like that.
+
+This time I was the one left behind.
+
+I was a stranger to myself.
+I have no home.
+
+I wonder when it will end.
 
 ![stranger](https://res.cloudinary.com/diekemzs9/image/upload/v1767914152/Untitled_design_1_avhora.png)
 
 ## Conclusion
 
-Now I avoid looking back. When you leave something behind, it often disappears. I find comfort where there are no people; where no one can mistake familiarity for permanence.
+Now I look at the people I have around and feel sorrow, now that I have no home I do not look back anymore, because once you leave something behind it disappears.
 
-I sit and breathe the present: no movement, only stillness. I try to hold off the approaching change, pleading silently for more time. The cycle follows me everywhere.
+This is why I enjoy my time where there are no people, that way no one makes the mistake of knowing me.
 
-I miss the privilege of staying in one place. If you have that stability, appreciate it.
+The familiar stranger.
+
+This is why I like to sit and enjoy the time I have, no movement, just sitting silently and inhaling the present, taking my mind away from the enemy approaching, begging for more time from my friend, the cycle, because it follows me everywhere I go.
+
+I miss the privilege of being in one place.
+If you have it, appreciate it.
 
