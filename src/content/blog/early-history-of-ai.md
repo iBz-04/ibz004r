@@ -1,6 +1,6 @@
 ---
 title: 'Early History of AI'
-description: 'looking into the inital efforts towards teh creation of Artificial Intelligence'
+description: 'looking into the inital efforts towards the creation of Artificial Intelligence'
 pubDate: 2026-02-01
 tags:
   - history
