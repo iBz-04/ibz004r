@@ -9,7 +9,6 @@ import developerTools from '../lib/developer-tools'
 import featuredLinks from '../lib/featured-links'
 import shortenDate from '../lib/shorten-date'
 
-
 const posts = (await getCollection('blog')).sort((a, b) => {
   const aDate = a.data.pubDate?.getTime() ?? 0
   const bDate = b.data.pubDate?.getTime() ?? 0
@@ -27,26 +26,28 @@ const postsList = posts.slice(0, 6).map((post) => ({
   <main class="container mx-auto mt-[5rem]">
     <div
       title="welcome"
-      class="inline-block rounded-xl border border-brown-200 bg-brown-100 bg-opacity-50 px-2 font-medium tracking-wider text-brown-700 no-underline"> <div class="i-lucide-mouse-pointer-click inline-block !text-md"></div> welcome
+      class="border-brown-200 bg-brown-100 text-brown-700 inline-block rounded-xl border bg-opacity-50 px-2 font-medium tracking-wider no-underline">
+      <div class="i-lucide-mouse-pointer-click !text-md inline-block"></div> welcome
     </div>
-    <p class="mt-1 text-secondary">to my personal site</p> 
-    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2"> <div class="col-span-1"> <p class="mt-6">
-          I'm Ibrahim, I see myself at the intersection of engineering, art and biology. I love to create , and create things that create.
-          I spend my time on research, coding, tennis, drawing, reading and writing.
-
+    <p class="text-secondary mt-1">to my personal site</p>
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+      <div class="col-span-1">
+        <p class="mt-6">
+          I'm Ibrahim, I see myself at the intersection of engineering, art and
+          biology. I love to create , and create things that create. I spend my
+          time on research, coding, tennis, drawing, reading and writing.
         </p>
 
         <blockquote class="text-secondary mt-4">
-          <p>
-            Highlight: 
-          </p>
+          <p>Highlight:</p>
 
           <ul>
-            <li>I've worked on enterprise software, health technology, and applied Ai</li>
+            <li>
+              I've worked on enterprise software, health technology, and applied
+              Ai
+            </li>
           </ul>
-    
         </blockquote>
-
 
         <!-- <p>
           I study engineering at
@@ -57,16 +58,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
           
         </p> -->
       </div>
-
     </div>
-
-
-
-
-
-
-
-
 
     <!-- Experience -->
 
@@ -85,25 +77,28 @@ const postsList = posts.slice(0, 6).map((post) => ({
                 </p> 
               </div> -->
 
-              {/* {link.featureImage && (
+    {
+      /* {link.featureImage && (
                 <div
                   class="aspect-[16/7] rounded-t-lg bg-[var(--parchment-3)]" role="img"
                   aria-label={link.title}>
                   <link.featureImage />
                 </div>
-              )} */}
-            </div>
-            {/* {link.footer && (
+              )} */
+    }
+  </main>
+  {
+    /* {link.footer && (
               <p class="text-secondary ms-2 mt-0 text-xs md:ms-4">
                 {link.footer}
               </p>
-            )} */}
-          </div>
-        <!-- ))
+            )} */
+  }
+</Shell>
+<!-- ))
       } -->
-    </div>
 
-    <!-- <div class="mt-8 flex">
+<!-- <div class="mt-8 flex">
       <a
         href="https://omnisoft.com.co"
         target="_blank"
@@ -113,84 +108,84 @@ const postsList = posts.slice(0, 6).map((post) => ({
       </a>
     </div> -->
 
-    <section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3"> <div class="col-span-1 lg:col-span-2"> <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts"> <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent
-          writings
-        </h2>
+<section class="mt-[5rem] grid grid-cols-1 lg:grid-cols-3">
+  <div class="col-span-1 lg:col-span-2">
+    <h2 class="mb-4 flex items-center gap-2 font-bold" id="recent-posts">
+      <div class="i-lucide-cassette-tape inline-block opacity-60"></div> Recent writings
+    </h2>
 
-        <ContentList noTransition items={postsList.slice(0, 2)} />
+    <ContentList noTransition items={postsList.slice(0, 2)} />
 
-        <div class="text-secondary mt-5"> view<a class="text-zinc-800" href="/blog">
-           more
-          </a>
-        </div>
+    <div class="text-secondary mt-5">
+      view<a class="text-zinc-800" href="/blog">more</a>
+    </div>
+  </div>
+</section>
+
+<section class="mt-[4rem]">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+    <div class="col-span-1 lg:col-span-2">
+      <h2 class="mb-4 flex items-center gap-2 font-bold">
+        <div class="i-lucide-terminal-square inline-block opacity-60"></div>
+        Projects
+      </h2>
+
+      <ul>
+        {
+          developerTools.slice(0, 3).map((pkg) => (
+            <li>
+              <ProjectItem project={pkg} />
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul id="hidden-projects" class="hidden">
+        {
+          developerTools.slice(3).map((pkg) => (
+            <li>
+              <ProjectItem project={pkg} />
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="text-secondary mt-5" id="show-more-btn">
+        view<span class="cursor-pointer text-zinc-800 underline">more</span>
       </div>
-    </section>
 
+      <div class="text-secondary mt-5 hidden" id="show-less-btn">
+        view<span class="cursor-pointer text-zinc-800 underline">less</span>
+      </div>
 
-    <section class="mt-[4rem]"> <div class="grid grid-cols-1 gap-4 lg:grid-cols-4"> <div class="col-span-1 lg:col-span-2"> <h2 class="mb-4 flex items-center gap-2 font-bold"> <div class="i-lucide-terminal-square inline-block opacity-60"></div>
-            Projects
-          </h2>
+      <script>
+        const moreBtn = document.getElementById('show-more-btn')
+        const lessBtn = document.getElementById('show-less-btn')
+        const hiddenProjects = document.getElementById('hidden-projects')
 
-          <ul>
-            {
-              developerTools.slice(0, 3).map((pkg) => (
-                <li>
-                  <ProjectItem project={pkg} />
-                </li>
-              ))
-            }
-          </ul>
+        moreBtn?.addEventListener('click', () => {
+          hiddenProjects?.classList.remove('hidden')
+          moreBtn.classList.add('hidden')
+          lessBtn?.classList.remove('hidden')
+        })
 
-          <ul id="hidden-projects" class="hidden">
-            {
-              developerTools.slice(3).map((pkg) => (
-                <li>
-                  <ProjectItem project={pkg} />
-                </li>
-              ))
-            }
-          </ul>
+        lessBtn?.addEventListener('click', () => {
+          hiddenProjects?.classList.add('hidden')
+          lessBtn.classList.add('hidden')
+          moreBtn?.classList.remove('hidden')
+        })
+      </script>
 
-          <div class="text-secondary mt-5" id="show-more-btn"> view<span class="text-zinc-800 cursor-pointer underline">
-             more
-            </span>
-          </div>
-
-          <div class="text-secondary mt-5 hidden" id="show-less-btn"> view<span class="text-zinc-800 cursor-pointer underline">
-             less
-            </span>
-          </div>
-
-          <script>
-            const moreBtn = document.getElementById('show-more-btn')
-            const lessBtn = document.getElementById('show-less-btn')
-            const hiddenProjects = document.getElementById('hidden-projects')
-
-            moreBtn?.addEventListener('click', () => {
-              hiddenProjects?.classList.remove('hidden')
-              moreBtn.classList.add('hidden')
-              lessBtn?.classList.remove('hidden')
-            })
-
-            lessBtn?.addEventListener('click', () => {
-              hiddenProjects?.classList.add('hidden')
-              lessBtn.classList.add('hidden')
-              moreBtn?.classList.remove('hidden')
-            })
-          </script>
-
-          <!-- <div class="text-secondary mt-5">
+      <!-- <div class="text-secondary mt-5">
             view<a
               class="text-zinc-800" href="/projects">
               more
             </a>
           </div> -->
-        </div>
+    </div>
 
-        <div class="col-span-1 lg:col-start-4">
-          <RoadmanCard />
-        </div>
-      </div>
-    </section>
-  </main>
-</Shell>
+    <div class="col-span-1 lg:col-start-4">
+      <RoadmanCard />
+    </div>
+  </div>
+</section>
