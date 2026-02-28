@@ -10,18 +10,28 @@ const { href } = Astro.props
 const url = new URL(Astro.props.href)
 
 const isGithub = url.hostname === 'github.com'
+const isAppStore = url.hostname === 'apps.apple.com' || url.hostname === 'apple.com'
 const isHome = url.hostname === SITE_HOST
+
+const parts = url.pathname.split('/')
+const appIndex = parts.indexOf('app')
+const appName = appIndex !== -1 && appIndex + 1 < parts.length ? parts[appIndex + 1] : 'App Store'
+
 const label = isGithub
-  ? url.pathname.split('/').pop()
-  : isHome
-    ? url.pathname
-    : url.toString().replace(/(^https:\/\/|\/$)/g, '')
+  ? parts.pop() || url.pathname
+  : isAppStore
+    ? appName.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+    : isHome
+      ? url.pathname
+      : url.toString().replace(/(^https:\/\/|\/$)/g, '')
 
 const icon = isGithub
   ? 'i-lucide-github'
-  : isHome
-    ? 'i-lucide-warehouse'
-    : 'i-lucide-globe'
+  : isAppStore
+    ? 'i-lucide-apple'
+    : isHome
+      ? 'i-lucide-warehouse'
+      : 'i-lucide-globe'
 ---
 
 <Link
