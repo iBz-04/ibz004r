@@ -7,6 +7,12 @@
 	src: url('/zed.woff2');
 }
 
+@font-face {
+	font-family: 'Plumby';
+	src: url('/plumby.woff') format('woff');
+	font-display: swap;
+}
+
 .text-secondary {
 	@apply text-zinc-500;
 }
@@ -62,6 +68,10 @@ kbd+kbd {
 
 .font-mono {
 	font-family: 'DM Mono', monospace;
+}
+
+.font-plumby {
+	font-family: 'Plumby', cursive;
 }
 
 .hover-link a {
