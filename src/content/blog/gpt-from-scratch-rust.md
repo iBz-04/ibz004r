@@ -1,18 +1,17 @@
 ---
 title: 'Building a tiny GPT in Rust'
-description: 'Walkthrough with code: a character level GPT in Rust using Candle. Full repo on GitHub.'
+description: 'Implementing a character level Generative Pretrained Transformer model'
 pubDate: 2026-05-02
 tags:
   - rust
-  - machine learning
+  - ml
   - gpt
-  - candle
   - transformers
 ---
 
 If you only call an API, the model is a black box. This project is the opposite: one file of Rust, [Candle](https://github.com/huggingface/candle) for tensors, and the ideas from [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762) boiled down to a **decoder only** stack (masked self attention, no encoder). That is the same family as GPT: predict the next character given everything so far.
 
-Everything lives in [RustGPT on GitHub](https://github.com/iBz-04/RustGPT). This post sticks to plain language and shows the parts that matter in code.
+Everything lives in [RustGPT on GitHub](https://github.com/iBz-04/RustGPT). This post sticks to simple language and shows the parts that matter in code.
 
 ## What you need at the top of the file
 
