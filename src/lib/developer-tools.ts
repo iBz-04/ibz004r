@@ -1,9 +1,21 @@
 const developerTools = [
+   {
+    title: 'Devseeker',
+    description:
+      'An autonomous llm coding agent that automates programming tasks. It generates, improves, and debugs code',
+    url: 'github.com/iBz-04/DevSeeker'
+  },
   {
     title: 'Pymanager',
     description:
       'The Official Python Install Manager application (for Windows Operating System only) used by millions',
     url: 'github.com/python/pymanager'
+  },
+   {
+    title: 'quaynor',
+    description:
+      'Open source AI inference runtime for mobile devices',
+    url: 'quaynor.site'
   },
   {
     title: 'Logoslate',
@@ -27,7 +39,7 @@ const developerTools = [
   {
     title: 'Offeline',
     description:
-      'An edge ai desktop runtime to run LLMs natively on devices. With offline functionality and custom memory management.',
+      'An web and desktop appl for running LLMs natively on devices with offline inference and custom memory management.',
     url: 'offeline.site'
   },
   {
@@ -36,25 +48,6 @@ const developerTools = [
       'A computer use agent that works in the windows GUI layer, providing advanced automation capabilities without relying on image recognition techniques.',
     url: 'pypi.org/project/raya-agent'
   },
-  {
-    title: 'Smart Dermatology',
-    description:
-      'Snap a picture, let an advanced AI algorithm analyze your skin, get personalized product  and dermatologist recommendations for skin diseases',
-    url: 'smartbeauty.bluesense.ai'
-  },
-  {
-    title: 'Devseeker',
-    description:
-      'An autonomous llm coding agent that automates programming tasks. It provides tools to generate, improve, and debug code through simple prompts.',
-    url: 'github.com/iBz-04/DevSeeker'
-  },
-  {
-    title: 'Cevheri',
-    description:
-      'A modern drone ground control station that integrates with physics simulators, gps and pymavlink protocol for communication',
-    url: 'github.com/iBz-04/Cevheri'
-  },
-
   {
     title: 'Seeker',
     description:
