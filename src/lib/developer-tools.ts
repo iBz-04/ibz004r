@@ -5,6 +5,12 @@ const developerTools = [
       'An autonomous llm coding agent that automates programming tasks. It generates, improves, and debugs code',
     url: 'github.com/iBz-04/DevSeeker'
   },
+   {
+    title: 'oky studio',
+    description:
+      'An indie app studio with 5+ apps for desktop and mobile platforms on the internet',
+    url: 'okystudio.com'
+  },
   {
     title: 'Pymanager',
     description:
@@ -14,7 +20,7 @@ const developerTools = [
    {
     title: 'quaynor',
     description:
-      'Open source AI inference runtime for mobile devices',
+      'Open source AI inference runtime and library for mobile devices written in rust',
     url: 'quaynor.site'
   },
   {
@@ -31,12 +37,6 @@ const developerTools = [
     url: 'mdpi.com/2504-446X/7/1/25'
   },
   {
-    title: 'Swypn',
-    description:
-      'An iOS game that helps users improve their AI image detection skills',
-    url: 'apps.apple.com/app/swypn-ai-photo-detection/id6759467546',
-  },
-  {
     title: 'Offeline',
     description:
       'An web and desktop appl for running LLMs natively on devices with offline inference and custom memory management.',
@@ -45,13 +45,13 @@ const developerTools = [
   {
     title: 'Raya',
     description:
-      'A computer use agent that works in the windows GUI layer, providing advanced automation capabilities without relying on image recognition techniques.',
+      'A computer use agent for windows OS, it provides automation without computer vision.',
     url: 'pypi.org/project/raya-agent'
   },
   {
     title: 'Seeker',
     description:
-      'An open source research AI agent as an alternative to OpenAI Deep Research, capable of iterative deep-dive investigations by incorporating search algorithms web scraping and LLMs',
+      'An open source deep research AI agent, capable of iterative deep-dive investigations.',
     url: 'github.com/iBz-04/Seeker'
   }
 
