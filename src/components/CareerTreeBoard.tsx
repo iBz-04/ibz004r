@@ -551,11 +551,34 @@ const treeData: CareerNode = {
   ],
 }
 
+const CROSS_LINKS: Array<{ source: string; target: string; color: string }> = [
+  { source: 'cat-1-1', target: 'cat-5-1', color: '#7b8fc4' },
+  { source: 'cat-1-2', target: 'cat-4-2', color: '#5aa8c4' },
+  { source: 'cat-1-4', target: 'cat-3-6', color: '#5dba88' },
+  { source: 'cat-3-1', target: 'cat-9-2', color: '#e8925a' },
+  { source: 'cat-3-2', target: 'cat-4-2', color: '#9970c2' },
+  { source: 'cat-3-2', target: 'cat-4-1', color: '#c46f9e' },
+  { source: 'cat-3-4', target: 'cat-4-2', color: '#60b8b8' },
+  { source: 'cat-4-1', target: 'cat-9-2', color: '#c4a44a' },
+  { source: 'cat-5-1', target: 'cat-8-1', color: '#e07070' },
+  { source: 'cat-7-3', target: 'cat-8-1', color: '#7ab84e' },
+]
+
+const PARENT_OF = new Map<string, string>()
+;(function buildParents(node: CareerNode, parent?: string) {
+  if (parent) PARENT_OF.set(node.id, parent)
+  node.children?.forEach((c) => buildParents(c, node.id))
+})(treeData)
+
 interface CardData {
   node: CareerNode
   hasChildren: boolean
   expanded: boolean
   matched: boolean
+  linked: boolean
+  dimmed: boolean
+  blurred: boolean
+  focused: boolean
   onToggle: (id: string, currentExpanded: boolean) => void
 }
 
@@ -578,7 +601,7 @@ const NODE_W = 250
 const NODE_H = 44
 
 function CareerCard({ data }: NodeProps<CardData>) {
-  const { node, hasChildren, expanded, matched, onToggle } = data
+  const { node, hasChildren, expanded, matched, linked, dimmed, blurred, focused, onToggle } = data
   const isRoot = node.type === 'root'
   const colors = useMemo(() => getMutedColors(node.id), [node.id])
   const accent = colors.accent
@@ -586,13 +609,13 @@ function CareerCard({ data }: NodeProps<CardData>) {
   return (
     <div
       onClick={() => hasChildren && onToggle(node.id, expanded)}
-      className={`ct-card ${hasChildren ? 'ct-clickable' : ''} ${matched ? 'ct-matched' : ''}`}
+      className={`ct-card ${hasChildren ? 'ct-clickable' : ''} ${matched ? 'ct-matched' : ''} ${linked ? 'ct-linked' : ''} ${dimmed ? 'ct-dimmed' : ''} ${blurred ? 'ct-blurred' : ''} ${focused ? 'ct-focused' : ''}`}
       style={{
         width: NODE_W,
         background: colors.bg,
-        borderColor: colors.border,
+        borderColor: linked || focused ? accent : colors.border,
       }}>
-      <Handle type="target" position={Position.Left} className="ct-handle" style={{ borderColor: accent }} />
+      <Handle id="in" type="target" position={Position.Left} className="ct-handle" style={{ borderColor: accent }} />
 
       <span className="ct-label-wrap">
         {node.icon && (
@@ -618,7 +641,8 @@ function CareerCard({ data }: NodeProps<CardData>) {
         />
       )}
 
-      <Handle type="source" position={Position.Right} className="ct-handle" style={{ borderColor: accent }} />
+      <Handle id="out" type="source" position={Position.Right} className="ct-handle" style={{ borderColor: accent }} />
+      <Handle id="in-right" type="target" position={Position.Right} className="ct-handle ct-handle-hidden" style={{ borderColor: accent }} />
     </div>
   )
 }
@@ -631,7 +655,8 @@ function buildGraph(
   onToggle: (id: string, currentExpanded: boolean) => void,
 ) {
   const nodes: Node<CardData>[] = []
-  const edges: Edge[] = []
+  const treeEdges: Edge[] = []
+  const crossEdges: Edge[] = []
   const q = query.trim().toLowerCase()
   const searchInfo = new Map<string, { selfMatch: boolean; subtreeMatch: boolean }>()
 
@@ -680,11 +705,21 @@ function buildGraph(
       id: node.id,
       type: 'career',
       position: { x: 0, y: 0 },
-      data: { node, hasChildren, expanded: isExpanded, matched: selfMatch, onToggle },
+      data: {
+        node,
+        hasChildren,
+        expanded: isExpanded,
+        matched: selfMatch,
+        linked: false,
+        dimmed: false,
+        blurred: false,
+        focused: false,
+        onToggle,
+      },
     })
 
     if (parentId) {
-      edges.push({
+      treeEdges.push({
         id: `${parentId}-${node.id}`,
         source: parentId,
         target: node.id,
@@ -699,26 +734,76 @@ function buildGraph(
   }
 
   walk(treeData)
-  return { nodes, edges }
+
+  const visibleIds = new Set(nodes.map((n) => n.id))
+  CROSS_LINKS.forEach(({ source, target, color }) => {
+    if (visibleIds.has(source) && visibleIds.has(target)) {
+      crossEdges.push({
+        id: `bridge-${source}-${target}`,
+        source,
+        target,
+        sourceHandle: 'out',
+        targetHandle: 'in-right',
+        type: 'default',
+        pathOptions: { curvature: 0.6 },
+        animated: true,
+        zIndex: 10,
+        style: { stroke: color, strokeWidth: 2, opacity: 0.85 },
+      })
+    }
+  })
+
+  return { nodes, treeEdges, crossEdges }
 }
 
-function layout(nodes: Node<CardData>[], edges: Edge[]) {
+const ARC_AMPLITUDE = 80
+
+function layout(nodes: Node<CardData>[], treeEdges: Edge[], crossEdges: Edge[]) {
   const g = new dagre.graphlib.Graph()
   g.setDefaultEdgeLabel(() => ({}))
-  g.setGraph({ rankdir: 'LR', nodesep: 18, ranksep: 90 })
+  g.setGraph({ rankdir: 'LR', nodesep: 18, ranksep: 150 })
 
   nodes.forEach((n) => g.setNode(n.id, { width: NODE_W, height: NODE_H }))
-  edges.forEach((e) => g.setEdge(e.source, e.target))
+  treeEdges.forEach((e) => g.setEdge(e.source, e.target))
   dagre.layout(g)
+
+  const parentOf = new Map<string, string>()
+  treeEdges.forEach((e) => parentOf.set(e.target, e.source))
+
+  const siblingGroups = new Map<string, { id: string; y: number }[]>()
+  nodes.forEach((n) => {
+    const p = g.node(n.id)
+    const parent = parentOf.get(n.id) ?? '__root__'
+    if (!siblingGroups.has(parent)) siblingGroups.set(parent, [])
+    siblingGroups.get(parent)!.push({ id: n.id, y: p.y })
+  })
+
+  const arcOffset = new Map<string, number>()
+  siblingGroups.forEach((group) => {
+    if (group.length < 3) {
+      group.forEach((it) => arcOffset.set(it.id, 0))
+      return
+    }
+    const ys = group.map((it) => it.y)
+    const minY = Math.min(...ys)
+    const maxY = Math.max(...ys)
+    const mid = (minY + maxY) / 2
+    const half = (maxY - minY) / 2 || 1
+    group.forEach((it) => {
+      const t = (it.y - mid) / half
+      arcOffset.set(it.id, ARC_AMPLITUDE * (1 - t * t))
+    })
+  })
 
   nodes.forEach((n) => {
     const p = g.node(n.id)
-    n.position = { x: p.x - NODE_W / 2, y: p.y - NODE_H / 2 }
+    const offset = arcOffset.get(n.id) ?? 0
+    n.position = { x: p.x - NODE_W / 2 + offset, y: p.y - NODE_H / 2 }
     n.targetPosition = Position.Left
     n.sourcePosition = Position.Right
   })
 
-  return { nodes, edges }
+  return { nodes, treeEdges, crossEdges }
 }
 
 function collectSearchInfo(
@@ -745,6 +830,8 @@ function Flow() {
     root: true,
   })
   const [query, setQuery] = useState('')
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const [focusedId, setFocusedId] = useState<string | null>(null)
   const { fitView } = useReactFlow()
 
   const toggle = useCallback((id: string, currentExpanded: boolean) => {
@@ -753,11 +840,11 @@ function Flow() {
 
   const layouted = useMemo(() => {
     const g = buildGraph(expanded, query, toggle)
-    return layout(g.nodes, g.edges)
+    return layout(g.nodes, g.treeEdges, g.crossEdges)
   }, [expanded, query, toggle])
 
   const [nodes, setNodes, onNodesChange] = useNodesState(layouted.nodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(layouted.edges)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(layouted.treeEdges)
 
   useEffect(() => {
     let animationFrameId: number
@@ -779,7 +866,7 @@ function Flow() {
       if (startPositions.has(n.id)) {
         initialPositions.set(n.id, startPositions.get(n.id)!)
       } else {
-        const parentEdge = layouted.edges.find((e) => e.target === n.id)
+        const parentEdge = layouted.treeEdges.find((e) => e.target === n.id)
         if (parentEdge) {
           const parentPos = startPositions.get(parentEdge.source) || targetPositions.get(parentEdge.source)
           if (parentPos) {
@@ -814,11 +901,110 @@ function Flow() {
       }
     }
 
-    setEdges(layouted.edges)
     animationFrameId = requestAnimationFrame(tick)
 
     return () => cancelAnimationFrame(animationFrameId)
-  }, [layouted, setEdges, setNodes])
+  }, [layouted, setNodes])
+
+  const focusSet = useMemo(() => {
+    if (!focusedId) return null
+    const set = new Set<string>([focusedId])
+    let p = PARENT_OF.get(focusedId)
+    while (p) {
+      set.add(p)
+      p = PARENT_OF.get(p)
+    }
+    layouted.nodes.forEach((n) => {
+      let a: string | undefined = n.id
+      while (a) {
+        if (a === focusedId) {
+          set.add(n.id)
+          break
+        }
+        a = PARENT_OF.get(a)
+      }
+    })
+    layouted.crossEdges.forEach((e) => {
+      if (e.source === focusedId) set.add(e.target)
+      if (e.target === focusedId) set.add(e.source)
+    })
+    return set
+  }, [focusedId, layouted])
+
+  const hoverActive = useMemo(
+    () =>
+      !focusedId &&
+      !!hoveredId &&
+      layouted.crossEdges.some(
+        (e) => e.source === hoveredId || e.target === hoveredId,
+      ),
+    [focusedId, hoveredId, layouted],
+  )
+
+  useEffect(() => {
+    if (focusSet) {
+      const treeVisible = layouted.treeEdges.map((e) => {
+        const inFocus = focusSet.has(e.source) && focusSet.has(e.target)
+        return inFocus ? e : { ...e, style: { ...e.style, opacity: 0.07 } }
+      })
+      const bridgeVisible = layouted.crossEdges.filter(
+        (e) => e.source === focusedId || e.target === focusedId,
+      )
+      setEdges([...treeVisible, ...bridgeVisible])
+      return
+    }
+    if (!hoverActive) {
+      setEdges(layouted.treeEdges)
+      return
+    }
+    const active = layouted.crossEdges.filter(
+      (e) => e.source === hoveredId || e.target === hoveredId,
+    )
+    setEdges([...layouted.treeEdges, ...active])
+  }, [focusSet, focusedId, hoverActive, hoveredId, layouted, setEdges])
+
+  useEffect(() => {
+    setNodes((curr) =>
+      curr.map((n) => {
+        let linked = false
+        let dimmed = false
+        let blurred = false
+        let focused = false
+
+        if (focusSet) {
+          const inFocus = focusSet.has(n.id)
+          focused = n.id === focusedId
+          const isBridgeConnected = layouted.crossEdges.some(
+            (e) =>
+              (e.source === focusedId && e.target === n.id) ||
+              (e.target === focusedId && e.source === n.id),
+          )
+          linked = focused || isBridgeConnected
+          blurred = !inFocus
+        } else if (hoverActive) {
+          const isHover = n.id === hoveredId
+          const isConnected = layouted.crossEdges.some(
+            (e) =>
+              (e.source === hoveredId && e.target === n.id) ||
+              (e.target === hoveredId && e.source === n.id),
+          )
+          linked = isHover || isConnected
+          dimmed = !linked
+        }
+
+        const d = n.data
+        if (
+          d.linked === linked &&
+          d.dimmed === dimmed &&
+          d.blurred === blurred &&
+          d.focused === focused
+        ) {
+          return n
+        }
+        return { ...n, data: { ...d, linked, dimmed, blurred, focused } }
+      }),
+    )
+  }, [focusSet, focusedId, hoverActive, hoveredId, layouted, setNodes])
 
   useEffect(() => {
     const t = setTimeout(() => fitView({ padding: 0.18, duration: 400 }), 60)
@@ -849,6 +1035,12 @@ function Flow() {
           edges={edges}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
+          onNodeMouseEnter={(_, node) => setHoveredId(node.id)}
+          onNodeMouseLeave={() => setHoveredId(null)}
+          onNodeDoubleClick={(_, node) =>
+            setFocusedId((cur) => (cur === node.id ? null : node.id))
+          }
+          onPaneClick={() => setFocusedId(null)}
           nodeTypes={nodeTypes}
           fitView
           fitViewOptions={{ padding: 0.18 }}
@@ -883,7 +1075,7 @@ export default function CareerTreeBoard() {
         }
         .ct-toolbar {
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
           align-items: center;
           padding: 0.7rem 0.8rem;
           border-bottom: 1px solid #ece6d8;
@@ -926,6 +1118,11 @@ export default function CareerTreeBoard() {
         .ct-clickable { cursor: pointer; }
         .ct-clickable:hover { border-color: #cfc8b6; box-shadow: 0 2px 8px rgba(60,50,30,0.09); }
         .ct-matched { border-color: #d6b35a; box-shadow: 0 0 0 2px rgba(214,179,90,0.35); }
+        .ct-card { transition: border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease, filter 0.18s ease; }
+        .ct-linked { box-shadow: 0 0 0 2px rgba(60,50,30,0.18), 0 2px 10px rgba(60,50,30,0.12); }
+        .ct-dimmed { opacity: 0.35; }
+        .ct-blurred { opacity: 0.32; filter: blur(2px); }
+        .ct-focused { box-shadow: 0 0 0 2.5px rgba(60,50,30,0.4), 0 4px 14px rgba(60,50,30,0.18); }
         .ct-label-wrap {
           display: flex; align-items: center; gap: 0.4rem;
           padding: 0.45rem 0.55rem; min-width: 0; flex: 1;
@@ -942,6 +1139,7 @@ export default function CareerTreeBoard() {
           width: 6px; height: 6px;
           background: #fff; border: 1px solid #b8b2a3;
         }
+        .ct-handle-hidden { opacity: 0; pointer-events: none; }
         .ct-root .react-flow__controls {
           box-shadow: 0 1px 4px rgba(60,50,30,0.12);
           border-radius: 0.5rem; overflow: hidden; border: 1px solid #e7e1d3;
