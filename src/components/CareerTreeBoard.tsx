@@ -831,6 +831,7 @@ function Flow() {
   })
   const [query, setQuery] = useState('')
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
   const [focusedId, setFocusedId] = useState<string | null>(null)
   const { fitView } = useReactFlow()
 
@@ -931,14 +932,15 @@ function Flow() {
     return set
   }, [focusedId, layouted])
 
-  const hoverActive = useMemo(
+  const peekId = focusedId ? null : hoveredId ?? selectedId
+
+  const peekActive = useMemo(
     () =>
-      !focusedId &&
-      !!hoveredId &&
+      !!peekId &&
       layouted.crossEdges.some(
-        (e) => e.source === hoveredId || e.target === hoveredId,
+        (e) => e.source === peekId || e.target === peekId,
       ),
-    [focusedId, hoveredId, layouted],
+    [peekId, layouted],
   )
 
   useEffect(() => {
@@ -953,15 +955,15 @@ function Flow() {
       setEdges([...treeVisible, ...bridgeVisible])
       return
     }
-    if (!hoverActive) {
+    if (!peekActive) {
       setEdges(layouted.treeEdges)
       return
     }
     const active = layouted.crossEdges.filter(
-      (e) => e.source === hoveredId || e.target === hoveredId,
+      (e) => e.source === peekId || e.target === peekId,
     )
     setEdges([...layouted.treeEdges, ...active])
-  }, [focusSet, focusedId, hoverActive, hoveredId, layouted, setEdges])
+  }, [focusSet, focusedId, peekActive, peekId, layouted, setEdges])
 
   useEffect(() => {
     setNodes((curr) =>
@@ -981,14 +983,14 @@ function Flow() {
           )
           linked = focused || isBridgeConnected
           blurred = !inFocus
-        } else if (hoverActive) {
-          const isHover = n.id === hoveredId
+        } else if (peekActive) {
+          const isPeek = n.id === peekId
           const isConnected = layouted.crossEdges.some(
             (e) =>
-              (e.source === hoveredId && e.target === n.id) ||
-              (e.target === hoveredId && e.source === n.id),
+              (e.source === peekId && e.target === n.id) ||
+              (e.target === peekId && e.source === n.id),
           )
-          linked = isHover || isConnected
+          linked = isPeek || isConnected
           dimmed = !linked
         }
 
@@ -1004,7 +1006,7 @@ function Flow() {
         return { ...n, data: { ...d, linked, dimmed, blurred, focused } }
       }),
     )
-  }, [focusSet, focusedId, hoverActive, hoveredId, layouted, setNodes])
+  }, [focusSet, focusedId, peekActive, peekId, layouted, setNodes])
 
   useEffect(() => {
     const t = setTimeout(() => fitView({ padding: 0.18, duration: 400 }), 60)
@@ -1037,10 +1039,16 @@ function Flow() {
           onEdgesChange={onEdgesChange}
           onNodeMouseEnter={(_, node) => setHoveredId(node.id)}
           onNodeMouseLeave={() => setHoveredId(null)}
+          onNodeClick={(_, node) =>
+            setSelectedId((cur) => (cur === node.id ? null : node.id))
+          }
           onNodeDoubleClick={(_, node) =>
             setFocusedId((cur) => (cur === node.id ? null : node.id))
           }
-          onPaneClick={() => setFocusedId(null)}
+          onPaneClick={() => {
+            setFocusedId(null)
+            setSelectedId(null)
+          }}
           nodeTypes={nodeTypes}
           fitView
           fitViewOptions={{ padding: 0.18 }}
