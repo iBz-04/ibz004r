@@ -7,7 +7,6 @@ import React, {
 import ReactFlow, {
   Background,
   BackgroundVariant,
-  Controls,
   Handle,
   Position,
   ReactFlowProvider,
@@ -560,7 +559,7 @@ interface CardData {
   hasChildren: boolean
   expanded: boolean
   matched: boolean
-  onToggle: (id: string) => void
+  onToggle: (id: string, currentExpanded: boolean) => void
 }
 
 function getMutedColors(id: string) {
@@ -589,7 +588,7 @@ function CareerCard({ data }: NodeProps<CardData>) {
 
   return (
     <div
-      onClick={() => hasChildren && onToggle(node.id)}
+      onClick={() => hasChildren && onToggle(node.id, expanded)}
       className={`ct-card ${hasChildren ? 'ct-clickable' : ''} ${matched ? 'ct-matched' : ''}`}
       style={{
         width: NODE_W,
@@ -632,22 +631,59 @@ const nodeTypes = { career: CareerCard }
 function buildGraph(
   expanded: Record<string, boolean>,
   query: string,
-  onToggle: (id: string) => void,
+  onToggle: (id: string, currentExpanded: boolean) => void,
 ) {
   const nodes: Node<CardData>[] = []
   const edges: Edge[] = []
   const q = query.trim().toLowerCase()
+  const searchInfo = new Map<string, { selfMatch: boolean; subtreeMatch: boolean }>()
+
+  if (q) {
+    collectSearchInfo(treeData, q, searchInfo)
+  }
 
   const walk = (node: CareerNode, parentId?: string) => {
     const hasChildren = !!node.children && node.children.length > 0
-    const isExpanded = !!expanded[node.id]
-    const matched = q !== '' && node.name.toLowerCase().includes(q)
+    const info = q ? searchInfo.get(node.id) || { selfMatch: false, subtreeMatch: false } : undefined
+    const selfMatch = q ? !!info?.selfMatch : false
+    const subtreeMatch = q ? !!info?.subtreeMatch : false
+
+    const isRoot = node.id === treeData.id
+    const hasExplicitState = Object.prototype.hasOwnProperty.call(expanded, node.id)
+    const explicitOpen = hasExplicitState ? !!expanded[node.id] : false
+
+    let isVisible = true
+    if (q) {
+      if (isRoot) {
+        isVisible = true
+      } else if (subtreeMatch) {
+        isVisible = true
+      } else if (parentId) {
+        const parentExplicitlyOpen = Object.prototype.hasOwnProperty.call(expanded, parentId) && !!expanded[parentId]
+        isVisible = parentExplicitlyOpen && (parentId !== treeData.id)
+      } else {
+        isVisible = false
+      }
+    }
+
+    if (!isVisible) {
+      return
+    }
+
+    let isExpanded = false
+    if (hasExplicitState) {
+      isExpanded = explicitOpen
+    } else if (q) {
+      isExpanded = isRoot || (!selfMatch && subtreeMatch)
+    } else {
+      isExpanded = false
+    }
 
     nodes.push({
       id: node.id,
       type: 'career',
       position: { x: 0, y: 0 },
-      data: { node, hasChildren, expanded: isExpanded, matched, onToggle },
+      data: { node, hasChildren, expanded: isExpanded, matched: selfMatch, onToggle },
     })
 
     if (parentId) {
@@ -688,11 +724,23 @@ function layout(nodes: Node<CardData>[], edges: Edge[]) {
   return { nodes, edges }
 }
 
-function collectExpandableIds(node: CareerNode, acc: Record<string, boolean>) {
-  if (node.children && node.children.length > 0) {
-    acc[node.id] = true
-    node.children.forEach((c) => collectExpandableIds(c, acc))
-  }
+function collectSearchInfo(
+  node: CareerNode,
+  query: string,
+  info: Map<string, { selfMatch: boolean; subtreeMatch: boolean }>,
+) {
+  const selfMatch = node.name.toLowerCase().includes(query)
+  let subtreeMatch = selfMatch
+
+  node.children?.forEach((child) => {
+    if (collectSearchInfo(child, query, info)) {
+      subtreeMatch = true
+    }
+  })
+
+  info.set(node.id, { selfMatch, subtreeMatch })
+
+  return subtreeMatch
 }
 
 function Flow() {
@@ -702,44 +750,9 @@ function Flow() {
   const [query, setQuery] = useState('')
   const { fitView } = useReactFlow()
 
-  const toggle = useCallback((id: string) => {
-    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }))
+  const toggle = useCallback((id: string, currentExpanded: boolean) => {
+    setExpanded((prev) => ({ ...prev, [id]: !currentExpanded }))
   }, [])
-
-  const expandAll = () => {
-    const acc: Record<string, boolean> = {}
-    collectExpandableIds(treeData, acc)
-    setExpanded(acc)
-  }
-
-  const collapseAll = () => setExpanded({ root: true })
-
-  useEffect(() => {
-    if (!query.trim()) return
-    const q = query.toLowerCase()
-    const toOpen: string[] = []
-    const walk = (node: CareerNode, path: string[]): boolean => {
-      const here = [...path, node.id]
-      const isMatch = node.name.toLowerCase().includes(q)
-      let childMatch = false
-      node.children?.forEach((c) => {
-        if (walk(c, here)) childMatch = true
-      })
-      if (isMatch || childMatch) {
-        toOpen.push(...here)
-        return true
-      }
-      return false
-    }
-    walk(treeData, [])
-    if (toOpen.length) {
-      setExpanded((prev) => {
-        const next = { ...prev }
-        toOpen.forEach((id) => (next[id] = true))
-        return next
-      })
-    }
-  }, [query])
 
   const layouted = useMemo(() => {
     const g = buildGraph(expanded, query, toggle)
@@ -818,23 +831,6 @@ function Flow() {
   return (
     <>
       <div className="ct-toolbar">
-        <div className="ct-toolbar-group">
-          <button className="ct-btn" onClick={expandAll}>
-            <span className="i-lucide-expand ct-btn-ic" />
-            Expand all
-          </button>
-          <button className="ct-btn" onClick={collapseAll}>
-            <span className="i-lucide-shrink ct-btn-ic" />
-            Collapse all
-          </button>
-          <button
-            className="ct-btn"
-            onClick={() => fitView({ padding: 0.18, duration: 400 })}>
-            <span className="i-lucide-maximize ct-btn-ic" />
-            Fit
-          </button>
-        </div>
-
         <div className="ct-search">
           <span className="i-lucide-search ct-search-ic" />
           <input
@@ -866,7 +862,6 @@ function Flow() {
           nodesConnectable={false}
           elevateNodesOnSelect={false}>
           <Background variant={BackgroundVariant.Dots} gap={20} size={1} color="#e0dac9" />
-          <Controls showInteractive={false} />
         </ReactFlow>
       </div>
     </>
@@ -891,30 +886,12 @@ export default function CareerTreeBoard() {
         }
         .ct-toolbar {
           display: flex;
-          flex-wrap: wrap;
-          gap: 0.75rem;
+          justify-content: flex-end;
           align-items: center;
-          justify-content: space-between;
           padding: 0.7rem 0.8rem;
           border-bottom: 1px solid #ece6d8;
           background: #fff;
         }
-        .ct-toolbar-group { display: flex; gap: 0.4rem; }
-        .ct-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.35rem;
-          font-size: 0.78rem;
-          color: #57534e;
-          background: #f5f3ec;
-          border: 1px solid #e7e1d3;
-          border-radius: 0.5rem;
-          padding: 0.32rem 0.6rem;
-          cursor: pointer;
-          transition: background 0.15s ease, border-color 0.15s ease;
-        }
-        .ct-btn:hover { background: #ece6d8; border-color: #d8d2c4; }
-        .ct-btn-ic { width: 0.85rem; height: 0.85rem; }
         .ct-search { position: relative; display: flex; align-items: center; }
         .ct-search input {
           width: 15rem;
