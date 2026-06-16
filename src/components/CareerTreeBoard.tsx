@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  useRef,
 } from 'react'
 import ReactFlow, {
   Background,
@@ -833,6 +834,7 @@ function Flow() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [focusedId, setFocusedId] = useState<string | null>(null)
+  const isFirstRender = useRef(true)
   const { fitView } = useReactFlow()
 
   const toggle = useCallback((id: string, currentExpanded: boolean) => {
@@ -848,6 +850,11 @@ function Flow() {
   const [edges, setEdges, onEdgesChange] = useEdgesState(layouted.treeEdges)
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+
     let animationFrameId: number
     const startTime = performance.now()
     const duration = 400
@@ -885,14 +892,24 @@ function Flow() {
       const ease = 1 - Math.pow(1 - progress, 3)
 
       setNodes((curr) => {
+        const currDataMap = new Map<string, any>()
+        curr.forEach((n) => {
+          currDataMap.set(n.id, n.data)
+        })
+
         return layouted.nodes.map((ln) => {
           const start = initialPositions.get(ln.id) || ln.position
           const target = ln.position
           const currentX = start.x + (target.x - start.x) * ease
           const currentY = start.y + (target.y - start.y) * ease
+          const existingData = currDataMap.get(ln.id) || ln.data
           return {
             ...ln,
             position: { x: currentX, y: currentY },
+            data: {
+              ...ln.data,
+              ...existingData,
+            },
           }
         })
       })
@@ -1055,7 +1072,7 @@ function Flow() {
           minZoom={0.1}
           maxZoom={2}
           proOptions={{ hideAttribution: true }}
-          nodesDraggable
+          nodesDraggable={false}
           nodesConnectable={false}
           elevateNodesOnSelect={false}>
           <Background variant={BackgroundVariant.Dots} gap={20} size={1} color="#e0dac9" />
