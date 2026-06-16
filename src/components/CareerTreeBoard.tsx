@@ -838,7 +838,25 @@ function Flow() {
   const { fitView } = useReactFlow()
 
   const toggle = useCallback((id: string, currentExpanded: boolean) => {
-    setExpanded((prev) => ({ ...prev, [id]: !currentExpanded }))
+    setExpanded((prev) => {
+      const next = { ...prev, [id]: !currentExpanded }
+      if (currentExpanded) {
+        const descendants: string[] = []
+        const findAndCollectDescendants = (n: CareerNode, active = false) => {
+          const isTarget = n.id === id
+          const collect = active || isTarget
+          if (collect && !isTarget) {
+            descendants.push(n.id)
+          }
+          n.children?.forEach((c) => findAndCollectDescendants(c, collect))
+        }
+        findAndCollectDescendants(treeData)
+        descendants.forEach((dId) => {
+          next[dId] = false
+        })
+      }
+      return next
+    })
   }, [])
 
   const layouted = useMemo(() => {
@@ -892,7 +910,7 @@ function Flow() {
       const ease = 1 - Math.pow(1 - progress, 3)
 
       setNodes((curr) => {
-        const currDataMap = new Map<string, any>()
+        const currDataMap = new Map<string, CardData>()
         curr.forEach((n) => {
           currDataMap.set(n.id, n.data)
         })
@@ -902,13 +920,16 @@ function Flow() {
           const target = ln.position
           const currentX = start.x + (target.x - start.x) * ease
           const currentY = start.y + (target.y - start.y) * ease
-          const existingData = currDataMap.get(ln.id) || ln.data
+          const existingData = currDataMap.get(ln.id)
           return {
             ...ln,
             position: { x: currentX, y: currentY },
             data: {
               ...ln.data,
-              ...existingData,
+              linked: existingData?.linked ?? ln.data.linked,
+              dimmed: existingData?.dimmed ?? ln.data.dimmed,
+              blurred: existingData?.blurred ?? ln.data.blurred,
+              focused: existingData?.focused ?? ln.data.focused,
             },
           }
         })
