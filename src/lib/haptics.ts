@@ -2,12 +2,20 @@ import { WebHaptics, type HapticInput } from 'web-haptics'
 
 let haptics: WebHaptics | null = null
 
-export function triggerHaptic(input: HapticInput = 'selection') {
-  if (!WebHaptics.isSupported) return
-
+function getHaptics() {
   if (!haptics) {
-    haptics = new WebHaptics()
+    haptics = new WebHaptics({
+      debug: import.meta.env.DEV,
+    })
   }
 
-  haptics.trigger(input)
+  return haptics
+}
+
+export function triggerHaptic(input: HapticInput = 'selection') {
+  void getHaptics().trigger(input)
+}
+
+export function isHapticSupported() {
+  return WebHaptics.isSupported
 }
