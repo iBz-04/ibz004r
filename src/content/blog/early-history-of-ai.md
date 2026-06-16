@@ -33,7 +33,7 @@ Universities such as Harvard, MIT, and Princeton begin offering computer science
 One of them is **Marvin Minsky**, a 23 year old PhD candidate at Princeton University.
 Inspired by Turing’s work, Minsky builds the world’s first working neural network using wires and six vacuum tubes as synapses. Despite frequent failures, the machine works and lays the foundation for artificial intelligence and neural networks.
 Shockley’s transistor leads to the transistor radio, which becomes the highest selling consumer electronic device of all time. The world gets its first taste of compact electronics.
-Shockley leaves Bell Labs and starts Shockley Semiconductor in Palo Alto, making it one of the earliest tech startups in Silicon Valley. He recruits bright minds such as Gordon Moore and Robert Noyce, along with twelve other geniuses.
+Shockley leaves Bell Labs and starts Shockley Semiconductor in Palo Alto, making it one of the earliest tech startups in Silicon Valley. He recruits bright minds such as **Gordon Moore** and **Robert Noyce**, along with twelve other geniuses.
 
 # 1956
 
@@ -48,7 +48,7 @@ The military now needs thousands of transistors, but manufacturing is unreliable
 ### Integrated Circuits
 
 Despite success, transistors are limited because each one performs a single task and scaling becomes impossible.
-Robert Noyce creates the integrated circuit, allowing transistors to operate together on a single chip. Though Jack Kilby proposed a similar idea earlier, Noyce’s version proves practical.
+**Robert Noyce** creates the integrated circuit, allowing transistors to operate together on a single chip. Though **Jack Kilby** proposed a similar idea earlier, Noyce’s version proves practical.
 This invention creates an entirely new industry. Former Fairchild employees leave to form new companies, later called the “Fairchildren,” including Intel, AMD, and LSI Logic. Over 90 percent of today’s computing power can be traced back to Fairchild.
 
 ![vacuum tubes](https://res.cloudinary.com/diekemzs9/image/upload/v1770417220/ASST._HEAD-ADMIN._ST._MARY_S_SENIOR_HIGH_SCHOOL_3_arcol7.png)
