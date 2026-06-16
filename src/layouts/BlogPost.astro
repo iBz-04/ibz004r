@@ -79,6 +79,7 @@ const headings = headingsRaw.filter(
                         <li>
                           <a
                             class="no-underline hover:underline"
+                            data-haptic="selection"
                             class:list={[{ 'ms-4': h.depth === 3 }]}
                             href={`#${h.slug}`}>
                             {h.text}

@@ -23,6 +23,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.2(astro@4.16.13(@types/node@22.9.0)(rollup@4.27.2)(typescript@5.6.3))(tailwindcss@3.4.15)
+      '@haptics/vanilla':
+        specifier: ^2.1.0
+        version: 2.1.0
       '@iconify-json/lucide':
         specifier: ^1.1.205
         version: 1.2.15
@@ -128,9 +131,6 @@ importers:
       vite:
         specifier: ^5.4.11
         version: 5.4.11(@types/node@22.9.0)
-      web-haptics:
-        specifier: ^0.0.6
-        version: 0.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.9.1
@@ -573,6 +573,12 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@haptics/core@2.1.0':
+    resolution: {integrity: sha512-A7M8wo/OOoSyDKV7UQ4x+J/Pvd+5SnXWznJovExTtCXt2zJq/jZDCj6bThAJZYICnO29U5BWuO3dS65oP2cqnQ==}
+
+  '@haptics/vanilla@2.1.0':
+    resolution: {integrity: sha512-FQf3bJgko8vDvL7V51Q5LAuvKZKTQWvUqazlKV5etigJclCSL1bpbn9+SKhkBlHXq1lX71U9JF3LJaJcF1+HEg==}
 
   '@iconify-json/lucide@1.2.15':
     resolution: {integrity: sha512-mbHlTJRqOrqRk8E8xnpPzqZwCqsKNB9ZyITqDEYEtePEGxki9VJWJMU8JcNqRKDfPS9vlFsjwepUuOGgusmZUA==}
@@ -3398,23 +3404,6 @@ packages:
       vite:
         optional: true
 
-  web-haptics@0.0.6:
-    resolution: {integrity: sha512-eCzcf1LDi20+Fr0x9V3OkX92k0gxEQXaHajmhXHitsnk6SxPeshv8TBtBRqxyst8HI1uf2FyFVE7QS3jo1gkrw==}
-    peerDependencies:
-      react: '>=18'
-      react-dom: '>=18'
-      svelte: '>=4'
-      vue: '>=3'
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      svelte:
-        optional: true
-      vue:
-        optional: true
-
   web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
 
@@ -3936,6 +3925,12 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@haptics/core@2.1.0': {}
+
+  '@haptics/vanilla@2.1.0':
+    dependencies:
+      '@haptics/core': 2.1.0
 
   '@iconify-json/lucide@1.2.15':
     dependencies:
@@ -7380,11 +7375,6 @@ snapshots:
   vitefu@1.0.3(vite@5.4.11(@types/node@22.9.0)):
     optionalDependencies:
       vite: 5.4.11(@types/node@22.9.0)
-
-  web-haptics@0.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    optionalDependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   web-namespaces@2.0.1: {}
 

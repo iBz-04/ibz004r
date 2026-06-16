@@ -11,6 +11,7 @@ const isExternal = url.hostname !== SITE_HOST
 
 <a
   class={Astro.props.className}
+  data-haptic="selection"
   target={isExternal ? '_blank' : '_self'}
   href={Astro.props.href}
 >

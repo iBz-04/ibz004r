@@ -112,7 +112,7 @@ const postsList = posts.slice(0, 6).map((post) => ({
     <ContentList noTransition items={postsList.slice(0, 2)} />
 
     <div class="text-secondary mt-5">
-      view <a class="text-zinc-800" href="/blog">more</a>
+      view <a class="text-zinc-800" data-haptic="selection" href="/blog">more</a>
     </div>
   </div>
 </section>
@@ -145,11 +145,11 @@ const postsList = posts.slice(0, 6).map((post) => ({
         }
       </ul>
 
-      <div id="show-more-btn" class="text-secondary mt-5 cursor-pointer">
+      <div id="show-more-btn" data-haptic="impact-medium" class="text-secondary mt-5 cursor-pointer">
         view <span class="text-zinc-800 underline">more</span>
       </div>
 
-      <div id="show-less-btn" class="text-secondary mt-5 hidden cursor-pointer">
+      <div id="show-less-btn" data-haptic="impact-medium" class="text-secondary mt-5 hidden cursor-pointer">
         view <span class="text-zinc-800 underline">less</span>
       </div>
 

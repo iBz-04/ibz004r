@@ -1,4 +1,4 @@
-import { type HapticInput, triggerHaptic } from './haptics'
+import { Haptics } from '@haptics/vanilla'
 
 const interactiveSelector = [
   'a[href]',
@@ -6,27 +6,19 @@ const interactiveSelector = [
   '[role="button"]',
   '[role="link"]',
   'summary',
-  'label[for]',
   '.cursor-pointer',
   '.ct-clickable',
   '.react-flow__controls-button',
-  '[data-haptic]',
 ].join(', ')
 
 const toggleIds = new Set(['show-more-btn', 'show-less-btn'])
 
-let lastKey = ''
-let lastAt = 0
-
-function getPattern(el: Element): HapticInput {
-  const custom = el.getAttribute('data-haptic')
-  if (custom) return custom as HapticInput
-  if (toggleIds.has(el.id)) return 'nudge'
-  return 'selection'
-}
+let haptics: Haptics | null = null
+let reinitTimer: ReturnType<typeof setTimeout> | null = null
 
 function shouldSkip(el: Element) {
   if (el.closest('[data-no-haptic]')) return true
+  if (el.hasAttribute('data-haptic')) return true
 
   if (
     el instanceof HTMLInputElement ||
@@ -39,32 +31,70 @@ function shouldSkip(el: Element) {
   return false
 }
 
-function handleInteraction(event: Event) {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-  const target = event.target
-  if (!(target instanceof Element)) return
-
-  const el = target.closest(interactiveSelector)
-  if (!el || shouldSkip(el)) return
-
-  if (event.type === 'pointerup') {
-    const pointerEvent = event as PointerEvent
-    if (pointerEvent.button !== 0) return
-  }
-
-  const key = `${el.tagName}:${el.id}:${el.getAttribute('href') ?? el.className}`
-  const now = Date.now()
-  if (key === lastKey && now - lastAt < 400) return
-  lastKey = key
-  lastAt = now
-
-  triggerHaptic(getPattern(el))
+function stamp(el: Element) {
+  if (shouldSkip(el)) return
+  el.setAttribute(
+    'data-haptic',
+    toggleIds.has(el.id) ? 'impact-medium' : 'selection',
+  )
 }
 
-document.addEventListener('pointerup', handleInteraction, { passive: true })
+function scan(root: ParentNode = document) {
+  if (root instanceof Element && root.matches(interactiveSelector)) {
+    stamp(root)
+  }
 
-document.addEventListener('keydown', (event) => {
-  if (event.key !== 'Enter' && event.key !== ' ') return
-  handleInteraction(event)
+  root.querySelectorAll(interactiveSelector).forEach(stamp)
+}
+
+function setupHaptics() {
+  scan()
+  haptics?.destroy()
+  haptics = new Haptics({
+    audioFallback: import.meta.env.DEV,
+  })
+}
+
+function scheduleSetup() {
+  if (reinitTimer) clearTimeout(reinitTimer)
+  reinitTimer = setTimeout(() => {
+    reinitTimer = null
+    setupHaptics()
+  }, 50)
+}
+
+const stampObserver = new MutationObserver((mutations) => {
+  let changed = false
+
+  for (const mutation of mutations) {
+    for (const node of mutation.addedNodes) {
+      if (!(node instanceof Element)) continue
+
+      if (node.matches(interactiveSelector)) {
+        stamp(node)
+        changed = true
+      }
+
+      node.querySelectorAll(interactiveSelector).forEach((el) => {
+        stamp(el)
+        changed = true
+      })
+    }
+  }
+
+  if (changed) scheduleSetup()
 })
+
+function start() {
+  setupHaptics()
+  stampObserver.observe(document.body, { childList: true, subtree: true })
+  document.addEventListener('astro:page-load', scheduleSetup)
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true })
+  } else {
+    start()
+  }
+}
