@@ -9,9 +9,9 @@ tags:
 
 # Intro
 
-Computers are now doing  some of the things that humans do when we say "we are thinking". I am convinced that machines will think in our lifetime and they already are .. sort of thinking. Below the algorithmic level, I know there is something we are overlooking as humans, something we are denying, "but they are just computers, they can never think like us". Maybe computers will never think like us, maybe we will outsource our thinking to the extent that there will be no distinction between man and machine in terms of output. 
+Computers are now doing  some of the things that humans do when we say **"we are thinking"**. I am convinced that machines will think in our lifetime and they already are .. sort of "thinking". Below the algorithmic level, I know there is something we are overlooking as humans, something we are denying, "but they are just computers, they can never think like us". Maybe computers will never think like us, bu instead we will outsource our thinking to the extent that there will be no distinction between man and machine in terms of output. 
 
-The history of thinking machines dates back to The year is 1939, Nazi Germany deploys the Enigma, an encryption machine believed to be unbreakable. The Allied forces face a new challenge and  turn to Alan Turing, a visionary mathematician who then envisioned a new kind of machine, which kickstarted the era of computing.
+The history of thinking machines dates back to the year **1939**, Nazi Germany deploys the Enigma, an encryption machine believed to be unbreakable. The Allied forces face a new challenge and  turn to Alan Turing, a visionary mathematician who then envisioned a new kind of machine, which kickstarted the era of computing.
 
 ![alan turing](https://res.cloudinary.com/diekemzs9/image/upload/v1770417501/ASST._HEAD-ADMIN._ST._MARY_S_SENIOR_HIGH_SCHOOL_4_qkqb9f.png)
 
