@@ -35,7 +35,7 @@ interface CareerNode {
 
 const treeData: CareerNode = {
   id: 'root',
-  name: 'ROOT KNOWLEDGE',
+  name: 'KNOWLEDGE',
   type: 'root',
   tag: './',
   icon: 'sprout',
