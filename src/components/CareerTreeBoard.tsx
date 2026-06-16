@@ -627,7 +627,6 @@ function CareerCard({ data }: NodeProps<CardData>) {
   return (
     <div
       onClick={() => hasChildren && onToggle(node.id, expanded)}
-      data-haptic={hasChildren ? 'selection' : undefined}
       className={`ct-card ${hasChildren ? 'ct-clickable' : ''} ${matched ? 'ct-matched' : ''} ${linked ? 'ct-linked' : ''} ${dimmed ? 'ct-dimmed' : ''} ${blurred ? 'ct-blurred' : ''} ${focused ? 'ct-focused' : ''}`}
       style={{
         width: NODE_W,
@@ -1087,7 +1086,7 @@ function Flow() {
         </div>
       </div>
 
-      <div className="ct-canvas">
+      <div className="ct-canvas" data-no-haptic>
         <ReactFlow
           nodes={nodes}
           edges={edges}
